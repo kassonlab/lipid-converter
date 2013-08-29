@@ -1,0 +1,107 @@
+[ molecule ]
+DPPC
+
+[ source ]
+berger
+
+[ target ]
+charmm36
+
+[ natoms ]
+130
+
+[ atoms ]
+; atnr	charmm	berger
+  0	N	N4
+  1	C13	C1
+  5	C14	C2
+  9	C15	C3
+  13	C12	C5
+  16	C11	C6
+  19	P	P8
+  20	O13	O9
+  21	O14	O10
+  22	O11	O11
+  23	O12	O7
+  24	C1	C12
+  27	C2	C13	
+  29	O21	O14
+  30	C21	C15
+  31	O22	O16
+  32	C22	C17
+  35	C3	C32
+  38	O31	O33
+  39	C31	C34
+  40	O32	O35
+  41	C32	C36		
+  44	C23	C18		
+  47	C24	C19
+  50	C25	C20
+  53	C26	C21
+  56	C27	C22
+  59	C28	C23	
+  62	C29	C24
+  65	C210	C25
+  68	C211	C26
+  71	C212	C27
+  74	C213	C28
+  77	C214	C29
+  80	C215	C30
+  83	C216	C31
+  87	C33	C37
+  90	C34	C38
+  93	C35	C39	
+  96	C36	C40
+  99	C37	C41
+  102	C38	C42
+  105	C39	C43
+  108	C310	C44
+  111	C311	C45
+  114	C312	C46
+  117	C313	C47
+  120	C314	C48
+  123	C315	C49
+  126	C316	C50
+
+[ hydrogens ]
+; atnr	    name	suffic	c1	c2	c3
+ 2	    H13	    ABC	C13	N	C15
+ 6	    H14	    ABC	C14	N	C15
+ 10	    H15	    ABC	C15	N	C13
+ 14	    H12	    AB	C12	C11	O12
+ 17	    H11	    AB	C11	C12	O12
+ 25	    H	    AB	C1	O11	C2
+ 28	    HS	    S	C2	O11	P
+ 33	    H2	    RS	C22	C21	C23
+ 36	    H	    XY	C3	C2	O31	
+ 42	    H2	    XY	C32	C31	C33
+ 45	    H3	    RS	C23	C22	C24
+ 48	    H4	    RS	C24	C23	C25
+ 51	    H5	    RS	C25	C24	C26
+ 54	    H6	    RS	C26	C25	C27
+ 57	    H7	    RS	C27	C26	C28
+ 60	    H8	    RS	C28	C27	C29
+ 63	    H9	    RS	C29	C28	C210
+ 66	    H10	    RS	C210	C29	C211
+ 69	    H11	    RS	C211	C210	C212
+ 72	    H12	    RS	C212	C211	C213
+ 75	    H13	    RS	C213	C212	C214
+ 78	    H14	    RS	C214	C213	C215
+ 81	    H15	    RS	C215	C214	C216
+ 84	    H16	    RST	C216	C215	C214
+ 88	    H3	    XY	C33	C32	C34
+ 91	    H4	    XY	C34	C33	C35
+ 94	    H5	    XY	C35	C34	C36
+ 97	    H6	    XY	C36	C35	C37
+ 100	    H7	    XY	C37	C36	C38
+ 103	    H8	    XY	C38	C37	C39
+ 106	    H9	    XY	C39	C38	C310
+ 109	    H10	    XY	C310	C39	C311
+ 112	    H11	    XY	C311	C310	C312
+ 115	    H12	    XY	C312	C311	C313
+ 118	    H13	    XY	C313	C312	C314
+ 121	    H14	    XY	C314	C313	C315
+ 124	    H15	    XY	C315	C314	C316
+ 127	    H16	    XYZ	C316	C315	C34
+   
+[ end ]

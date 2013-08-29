@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+<ul>
+  <li><a href="/convert/convert">[ Convert ]</a></li>
+  <li><a href="/convert/transform">[ Transform ]</a></li>
+  <li><a href="/convert/help">[ Help ]</a></li>
+  <li><a href="/convert/references">[ References ]</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h2>[ convert ]</h2>
+<form action="/convert/convert/" method="post" enctype="multipart/form-data">{% csrf_token %}
+  <ul>
+    {{ form.as_ul }}
+  </ul>
+<input type="submit" name="submit" value="Convert">
+</form>
+{% endblock %}
+

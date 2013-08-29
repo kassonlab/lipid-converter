@@ -1,0 +1,27 @@
+application: lipid-converter
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: no
+
+libraries:
+ - name: django
+   version: "latest"
+ - name: numpy
+   version: "latest"
+
+builtins:
+ - django_wsgi: on
+ - deferred: on
+
+env_variables:
+   DJANGO_SETTINGS_MODULE: 'lipid2.settings'
+
+handlers:
+ - url: /static
+   static_dir: static
+   expiration: '0'
+
+ - url: /.*
+   script: convert.main.application
+

@@ -1,0 +1,66 @@
+[ molecule ]
+POPG
+
+[ source ]
+charmm36
+
+[ target ]
+berger
+
+[ atoms ]
+; atnr	berger	charmm36
+  1	H1	HO2
+  2	O1	OC2
+  3	C0	C12
+  4	CA	C13
+  5	O2	OC3
+  6	H2	HO3
+  7	CB	C11
+  8	OA	O12
+  9	P	P
+  10	OB	O13
+  11	OC	O14
+  12	OD	O11
+  13	CC	C1
+  14	CD	C2
+  15	CE	C3
+  16	OE	O31
+  17	C1A	C31
+  18	OF	O32
+  19	C1B	C32
+  20	C1C	C33
+  21	C1D	C34
+  22	C1E	C35
+  23	C1F	C36
+  24	C1G	C37
+  25	C1H	C38
+  26	C1I	C39
+  27	C1J	C310
+  28	C1K	C311
+  29	C1L	C312
+  30	C1M	C313
+  31	C1N	C314
+  32	C1O	C315
+  33	C1P	C316	
+  34	OG	O21
+  35	C2A	C21
+  36	OH	O22
+  37	C2B	C22
+  38	C2C	C23
+  39	C2D	C24
+  40	C2E	C25
+  41	C2F	C26
+  42	C2G	C27
+  43	C2H	C28
+  44	C2I	C29
+  45	C2J	C210
+  46	C2K	C211
+  47	C2L	C212
+  48	C2M	C213
+  49	C2N	C214
+  50	C2O	C215
+  51	C2P	C216
+  52	C2Q	C217
+  52	C2R	C218
+ 
+[ end ]

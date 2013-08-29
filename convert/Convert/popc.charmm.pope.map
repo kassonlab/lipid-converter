@@ -1,0 +1,34 @@
+[ molecule ]
+POPC
+
+[ forcefield ]
+charmm36
+
+[ target ]
+POPE
+
+[ natoms ]
+125
+
+[ rename ]
+; from	to
+  C13	HN1
+  C14	HN2	
+  C15	HN3
+   
+[ add ]
+; name	suffix	c0	c1	c2
+   	 
+[ remove ]
+; name
+  H13A
+  H13B
+  H13C
+  H14A
+  H14B
+  H14C
+  H15A
+  H15B
+  H15C
+
+[ end ]

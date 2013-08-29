@@ -1,0 +1,99 @@
+[ molecule ]
+DMPC
+
+[ source ]
+gromos43a1
+
+[ target ]
+charmm36
+
+[ natoms ]
+118
+
+[ atoms ]
+; atnr	charmm	gromos43a1
+  0	N	N4
+  1	C13	C1
+  5	C14	C2
+  9	C15	C3
+  13	C12	C5	
+  16	C11	C6
+  19	P	P8
+  20	O13	OM9
+  21	O14	OM10
+  22	O11	OS11
+  23	O12	OS7
+  24	C1	C12
+  27	C2	C13
+  29	O21	OS14
+  30	C21	C15
+  31	O22	O16
+  32	C22	C17
+  35	C3	C30
+  38	O31	OS31
+  39	C31	C32
+  40	O32	O33
+  41	C32	C34
+  44	C23	C18
+  47	C24	C19
+  50	C25	C20
+  53	C26	C21
+  56	C27	C22
+  59	C28	C23
+  62	C29	C24
+  65	C210	C25
+  68	C211	C26
+  71	C212	C27
+  74	C213	C28
+  77	C214	C29
+  81	C33	C35
+  84	C34	C36
+  87	C35	C37
+  90	C36	C38
+  93	C37	C39
+  96	C38	C40
+  99	C39	C41	
+  102	C310	C42
+  105	C311	C43
+  108	C312	C44
+  111	C313	C45
+  114	C314	C46
+  
+[ hydrogens ]
+; atnr	    name	suffix	c1	c2	c3	    
+  2	    H13	    	ABC	C13	N	C15
+  6	    H14	    	ABC	C14	N	C15
+  10	    H15	    	ABC	C15	N	C13
+  14	    H12	    	AB	C12	C11	O12
+  17	    H11	    	AB	C11	C12	O12
+  25	    H	    	AB	C1	O11	C2
+  28	    HS	    	S	C2	O11	P
+  33	    H2	    	RS	C22	C21	C23
+  36	    H	    	XY	C3	C2	O31
+  42	    H2	    	XY	C32	C31	C33
+  45	    H3	    	RS	C23	C22	C24
+  48	    H4	    	RS	C24	C23	C25
+  51	    H5	    	RS	C25	C24	C26
+  54	    H6	    	RS	C26	C25	C27
+  57	    H7	    	RS	C27	C26	C28
+  60	    H8	    	RS	C28	C27	C29
+  63	    H9	    	RS	C29	C28	C210
+  66	    H10	    	RS	C210	C29	C211
+  69	    H11	    	RS	C211	C210	C212
+  72	    H12	    	RS	C212	C211	C213
+  75	    H13	    	RS	C213	C212	C214
+  78	    H14	    	RST	C214	C213	C212
+  82	    H3	    	XY	C33	C32	C34
+  85	    H4	    	XY	C34	C33	C35
+  88	    H5	    	XY	C35	C34	C36
+  91	    H6	    	XY	C36	C35	C37
+  94	    H7	    	XY	C37	C36	C38
+  97	    H8	    	XY	C38	C37	C39
+  100	    H9	    	XY	C39	C38	C310
+  103	    H10	    	XY	C310	C39	C311
+  106	    H11	    	XY	C311	C310	C312
+  109	    H12	    	XY	C312	C311	C313
+  112	    H13	    	XY	C313	C312	C314
+  115	    H14	    	XYZ	C314	C313	C312
+
+[ end ]

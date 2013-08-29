@@ -1,0 +1,30 @@
+[ molecule ]
+POPC
+
+[ forcefield ]
+charmm36
+
+[ target ]
+DPPC
+
+[ natoms ]
+130
+
+[ rename ]
+; from	to
+   
+[ add ]
+; name	suffix	c0	c1	c2
+  H16T	T	C216	H16R	H16S
+   	 
+[ remove ]
+; name
+  C217
+  H17R
+  H17S
+  C218
+  H18R
+  H18S
+  H18T
+    
+[ end ]

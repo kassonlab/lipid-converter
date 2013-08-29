@@ -1,0 +1,108 @@
+[ molecule ]
+POPE
+
+[ source ]
+berger
+
+[ target ]
+charmm36
+
+[ natoms ]
+125
+
+[ atoms ]
+; atnr	charmm	berger
+ 0	N	N	
+ 1	HN1	H1
+ 2	HN2	H2
+ 3	HN3	H3
+ 4	C12	CA	
+ 7	C11	CB
+ 10	P	P
+ 11	O13	OC
+ 12	O14	OD
+ 13	O11	OB
+ 14	O12	OA
+ 15	C1	CC
+ 16	C2	CD
+ 20	O21	OG
+ 21	C21	C2A
+ 22	O22	OH
+ 23	C22	C2B	
+ 26	C3	CE
+ 29	O31	OE
+ 30	C31	C1A
+ 31	O32	OF
+ 32	C32	C1B
+ 35	C23	C2C
+ 38	C24	C2D
+ 41	C25	C2E
+ 44	C26	C2F
+ 47	C27	C2G
+ 50	C28	C2H
+ 53	C29	C2I
+ 55	C210	C2J
+ 57	C211	C2K
+ 60	C212	C2L
+ 63	C213	C2M
+ 66	C214	C2N
+ 69	C215	C2O
+ 72	C216	C2P
+ 75	C217	C2Q
+ 78	C218	C2R
+ 82	C33	C1C
+ 85	C34	C1D
+ 88	C35	C1E
+ 91	C36	C1F
+ 94	C37	C1G
+ 97	C38	C1H	
+ 100	C39	C1I
+ 103	C310	C1J
+ 106	C311	C1K
+ 109	C312	C1L
+ 112	C313	C1M
+ 115	C314	C1N
+ 118	C315	C1O
+ 121	C316	C1P
+
+[ hydrogens ]
+;atnr	    name	suffix	c1	c2	c3
+  5	    H12		AB	C12	N	C11
+  8	    H11		AB	C11	C12	O12
+  16	    H	  	AB	C1	O11	C2
+  19	    HS	    	S	C2	C1	O21
+  24	    H2	    	RS	C22	C21	C23
+  27	    H	    	XY	C3	C2	O31	
+  33	    H2	    	XY	C32	C31	C33
+  36	    H3	    	RS	C23	C22	C24
+  39	    H4	    	RS	C24	C23	C25
+  42	    H5	    	RS	C25	C24	C26
+  45	    H6	    	RS	C26	C25	C27
+  48	    H7	    	RS	C27	C26	C28
+  51	    H8	    	RS	C28	C27	C29
+  54	    H91	    	1	C29	C28	C210
+  56	    H101	1	C210	C29	C211
+  58	    H11	    	RS	C211	C210	C212
+  61	    H12	    	RS	C212	C211	C213
+  64	    H13	    	RS	C213	C212	C214
+  67	    H14	    	RS	C214	C213	C215
+  70	    H15	    	RS	C215	C214	C216
+  73	    H16	    	RS	C216	C215	C217
+  76	    H17	    	RS	C217	C216	C218	
+  79	    H18	    	RST	C218	C217	C216
+  83	    H3	    	XY	C33	C32	C34
+  86	    H4	    	XY	C34	C33	C35
+  89	    H5	    	XY	C35	C34	C36
+  92	    H6	    	XY	C36	C35	C37
+  95	    H7	    	XY	C37	C36	C38
+  98	    H8	    	XY	C38	C37	C39
+  101	    H9	    	XY	C39	C38	C310
+  104	    H10	    	XY	C310	C39	C311
+  107	    H11	    	XY	C311	C310	C312
+  110	    H12	    	XY	C312	C311	C313
+  113	    H13	    	XY	C313	C312	C314
+  116	    H14	    	XY	C314	C313	C315
+  119	    H15	    	XY	C315	C314	C316
+  122	    H16	    	XYZ	C316	C315	C314
+ 
+[ end ]

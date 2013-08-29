@@ -1,0 +1,59 @@
+[ molecule ]
+DMPC
+
+[ source ]
+charmm36
+
+[ target ]
+berger
+
+[ atoms ]
+; atnr	berger	charmm36
+  1	CA	C13	
+  2	CB	C14
+  3	CC	C15
+  4	N	N
+  5	CD	C12	
+  6	CE	C11
+  7	OA	O12
+  8	P	P
+  9	OB	O13
+  10	OC	O14
+  11	OD	O11
+  12	CF	C1
+  13	CG	C2
+  14	OE	O21
+  15	C2A	C21
+  16	OF	O22
+  17	C2B	C22
+  18	C2C	C23
+  19	C2D	C24
+  20	C2E	C25
+  21	C2F	C26
+  22	C2G	C27
+  23	C2H	C28
+  24	C2I	C29
+  25	C2J	C210
+  26	C2K	C211
+  27	C2L	C212
+  28	C2M	C213
+  29	C2N	C214
+  30	CH	C3
+  31	OG	O31
+  32	C1A	C31
+  33	OH	O32
+  34	C1B	C32
+  35	C1C	C33
+  36	C1D	C34
+  37	C1E	C35
+  38	C1F	C36
+  39	C1G	C37
+  40	C1H	C38
+  41	C1I	C39	
+  42	C1J	C310
+  43	C1K	C311
+  44	C1L	C312
+  45	C1M	C313
+  46	C1N	C314
+   
+[ end ]
