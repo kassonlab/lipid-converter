@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/103/trunk/python/src/cloudstorage
+END
+common.py
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/103/trunk/python/src/cloudstorage/common.py
+END
+api_utils.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/103/trunk/python/src/cloudstorage/api_utils.py
+END
+errors.py
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/52/trunk/python/src/cloudstorage/errors.py
+END
+storage_api.py
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/103/trunk/python/src/cloudstorage/storage_api.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/44/trunk/python/src/cloudstorage/__init__.py
+END
+test_utils.py
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/44/trunk/python/src/cloudstorage/test_utils.py
+END
+cloudstorage_api.py
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/103/trunk/python/src/cloudstorage/cloudstorage_api.py
+END
+rest_api.py
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/94/trunk/python/src/cloudstorage/rest_api.py
+END

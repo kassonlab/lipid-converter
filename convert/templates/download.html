@@ -1,4 +1,8 @@
-<html>
-<h2>[ download ]</h2>
-<p>Results {{ file_id }}<p>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<h2>[ results ]</h2>
+<form action="/convert/download/{{ file_id }}" method="post">{% csrf_token %}
+  <input type="submit" name="submit" value="Download">
+</form>
+{% endblock %}

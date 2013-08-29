@@ -6,10 +6,10 @@ class Sorting:
         self.atoms = atoms
 
     def sort(self,residue):
-        print residue
+        #print residue
         
-        print self.atoms
-        print len(self.atoms)
+        #print self.atoms
+        #print len(self.atoms)
 
         transformed = [0]*len(self.atoms)
         

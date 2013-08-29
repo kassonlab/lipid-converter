@@ -96,9 +96,9 @@ class ConvertMap:
         # We should now have a residues array of length self.natoms
         atoms = [i[0].strip() for i in residue]
         
-        print atoms
-        print len(atoms)
-        print self.natoms
+        #print atoms
+        #print len(atoms)
+        #print self.natoms
 
         if not len(residue)==self.natoms:
             print "Something is wrong in converting..."

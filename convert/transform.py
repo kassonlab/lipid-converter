@@ -57,14 +57,9 @@ def lipid_converter(filename,ff_from,ff_to,email):
     
     token = sha1(email)
     save_to_cloud(formatted_out,token.hexdigest())
-    #print token.hexdigest()
-
+    
     # Send mail from here for now
     dn = 'lipid-converter.appspot.com/convert/download/%s'%token.hexdigest()
-    
-    #download_link = '<html><head></head><body>'
-    #download_link = download_link+'<a href=\"%s\"'%dn
-    #download_link = download_link+'</a></body></html>'
     
     download_link = dn
     mail.send_mail(sender='per.larsson@sbc.su.se',

@@ -3,7 +3,8 @@ import cloudstorage as gcs
 my_default_retry_params = gcs.RetryParams(initial_delay=0.2,
                                           max_delay=5.0,
                                           backoff_factor=2,
-                                          max_retry_period=15)
+                                          max_retry_period=300,
+                                          urlfetch_timeout=600)
 
 gcs.set_default_retry_params(my_default_retry_params)
 
@@ -31,7 +32,7 @@ def create_file(f,filename):
     
 
 def read_file(filename):
-    print "read_FILE"
+    #print "read_FILE"
     filename = BUCKET + filename
     #self.response.write('Truncated file content:\n')
     gcs_file = gcs.open(filename,'r')
@@ -47,7 +48,7 @@ def read_file(filename):
      #gcs_file.seek(-1024, os.SEEK_END) 
      #self.response.write(gcs_file.read())              
     gcs_file.close()
-    print "FOO"
+    #print "FOO"
     return foo
 
 def stat_file(filename):
@@ -64,6 +65,6 @@ def list_bucket(bucket):
 def save_to_cloud(f,filename):
       filename = BUCKET + filename
       
-      print filename
+      #print filename
       create_file(f,filename)
 

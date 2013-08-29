@@ -38,7 +38,7 @@ def convert(request):
             #foo = lipid_converter(fn,ff_from,ff_to)
             #print foo
             # Redirect to a result page after post to avoid duplicates
-            return HttpResponseRedirect('/convert/results')
+            return HttpResponseRedirect('/convert/results/%s'%email)
     else:
         form = ConvertForm()
 
@@ -57,12 +57,33 @@ def help(request):
 def references(request):
     return render_to_response('references.html')
 
-def results(request):
-    return render_to_response('results.html')
+def results(reuquest,email):
+    
+    if email[-1]=='/':
+        email = email[:-1]
+            
+    args = {}
+    args['email']=email
+    return render_to_response('results.html',args)
 
 # There are probably much better ways of doing this
 def download(request,file_id):
+    
+    # is this safe here without any validation?
+    if request.method=='POST':
+        if file_id[-1]=='/':
+            file_id = file_id[:-1]
+            
+        return HttpResponseRedirect('/convert/get/%s'%file_id)
 
+    args = {}
+    args.update(csrf(request))
+    args['file_id']=file_id
+    
+    return render_to_response('download.html',args)
+
+def get(request,file_id):
+    
     if file_id[-1]=='/':
         file_id = file_id[:-1]
         

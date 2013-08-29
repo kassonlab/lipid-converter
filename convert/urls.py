@@ -6,7 +6,8 @@ urlpatterns = patterns('',
                        url(r'^transform/$','convert.views.transform'),
                        url(r'^help/$','convert.views.help'),
                        url(r'^references/$','convert.views.references'),
-                       url(r'^results/$','convert.views.results'),
+                       url(r'^results/(?P<email>(.*)/$)','convert.views.results'),
                        url(r'^download/(?P<file_id>(.*)/$)','convert.views.download'),
+                       url(r'^get/(?P<file_id>(.*)/$)','convert.views.get'),
                        )
 

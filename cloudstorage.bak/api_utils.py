@@ -15,13 +15,11 @@ import math
 import os
 import threading
 import time
-import urllib
 
 
 try:
   from google.appengine.api import urlfetch
   from google.appengine.datastore import datastore_rpc
-  from google.appengine.ext.ndb import eventloop
   from google.appengine import runtime
   from google.appengine.runtime import apiproxy_errors
 except ImportError:
@@ -29,7 +27,6 @@ except ImportError:
   from google.appengine.datastore import datastore_rpc
   from google.appengine import runtime
   from google.appengine.runtime import apiproxy_errors
-  from google.appengine.ext.ndb import eventloop
 
 
 _RETRIABLE_EXCEPTIONS = (urlfetch.DownloadError,
@@ -55,18 +52,6 @@ def _get_default_retry_params():
     return RetryParams()
   else:
     return copy.copy(default)
-
-
-def _quote_filename(filename):
-  """Quotes filename to use as a valid URI path.
-
-  Args:
-    filename: user provided filename. /bucket/filename.
-
-  Returns:
-    The filename properly quoted to use as URI's path component.
-  """
-  return urllib.quote(filename)
 
 
 def _should_retry(resp):
@@ -210,6 +195,10 @@ def _retry_fetch(url, retry_params, **kwds):
   if delay <= 0:
     return
 
+  deadline = kwds.get('deadline', None)
+  if deadline is None:
+    kwds['deadline'] = retry_params.urlfetch_timeout
+
   while delay > 0:
     resp = None
     try:
@@ -229,13 +218,14 @@ def _retry_fetch(url, retry_params, **kwds):
       break
     elif resp:
       logging.info(
-          'Got status %s from GCS when fetching with url %s. '
-          'Will retry in %s seconds.',
-          resp.status_code, url, delay)
+          'Got status %s from GCS. Will retry in %s seconds.',
+          resp.status_code, delay)
     else:
       logging.info(
-          'Got exception "%r" while contacting GCS. Will retry in %s seconds.',
-          e, delay)
+          'Got exception while contacting GCS. Will retry in %s seconds.',
+          delay)
+      logging.info(e)
+    logging.debug('Tried to reach url %s', url)
 
   if resp:
     return resp
@@ -244,25 +234,3 @@ def _retry_fetch(url, retry_params, **kwds):
                n - 1, time.time() - start_time)
   raise
 
-
-def _run_until_rpc():
-  """Eagerly evaluate tasklets until it is blocking on some RPC.
-
-  Usually ndb eventloop el isn't run until some code calls future.get_result().
-
-  When an async tasklet is called, the tasklet wrapper evaluates the tasklet
-  code into a generator, enqueues a callback _help_tasklet_along onto
-  the el.current queue, and returns a future.
-
-  _help_tasklet_along, when called by the el, will
-  get one yielded value from the generator. If the value if another future,
-  set up a callback _on_future_complete to invoke _help_tasklet_along
-  when the dependent future fulfills. If the value if a RPC, set up a
-  callback _on_rpc_complete to invoke _help_tasklet_along when the RPC fulfills.
-  Thus _help_tasklet_along drills down
-  the the chain of futures until some future is blocked by RPC. El runs
-  all callbacks and constantly check pending RPC status.
-  """
-  el = eventloop.get_event_loop()
-  while el.current:
-    el.run0()

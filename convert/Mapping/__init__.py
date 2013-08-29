@@ -120,7 +120,7 @@ class AtomMap:
                 
                     sys.exit()
                 
-        print transformed
+        #print transformed
         return transformed
     
 
@@ -190,5 +190,5 @@ mapping = _init()
 
 def get(ff_from,ff_to):
     final_map = dict([(i[0],mapping[i]) for i in mapping.keys() if i[1]==ff_from and i[2]==ff_to])
-    print final_map.keys()
+    #print final_map.keys()
     return final_map
