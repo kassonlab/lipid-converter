@@ -57,21 +57,20 @@ class AtomMap:
         # We loop over atoms here rather than source_atoms (they contain
         # the same atoms at this stage, but atoms have them in the order of the input
         # file
-            
-        for i,a1 in enumerate(atoms):
-
+        
+        for i,a1 in enumerate(source_atoms):
+            pos = aux.get_pos_in_list(residue,a1)            
             a2 = target_atoms[i]
             
-            resn = residue[i][1]
-            resi = residue[i][2]
-            chain = residue[i][3]
-            x = residue[i][4]
-            y = residue[i][5]
-            z = residue[i][6]
+            resn = residue[pos][1]
+            resi = residue[pos][2]
+            chain = residue[pos][3]
+            x = residue[pos][4]
+            y = residue[pos][5]
+            z = residue[pos][6]
             
             transformed.append((a2,resn,resi,chain,x,y,z))
-
-        #print transformed
+            
         # Add in the hydrogens, if specified in the map file
         if self.hyd:
             for i in range(len(self.hyd)):

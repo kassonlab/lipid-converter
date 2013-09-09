@@ -2,7 +2,7 @@
 
 {% block content %}
 <h2>[ results ]</h2>
-<form action="/convert/download/{{ file_id }}" method="post">{% csrf_token %}
+<form action="/get/{{ file_id }}" method="post">
   <input type="submit" name="submit" value="Download">
 </form>
 {% endblock %}

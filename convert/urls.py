@@ -9,5 +9,6 @@ urlpatterns = patterns('',
                        url(r'^results/(?P<email>(.*)/$)','convert.views.results'),
                        url(r'^download/(?P<file_id>(.*)/$)','convert.views.download'),
                        url(r'^get/(?P<file_id>(.*)/$)','convert.views.get'),
+                       url(r'^error/$','convert.views.error'),
                        )
 

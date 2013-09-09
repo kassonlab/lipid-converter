@@ -11,11 +11,7 @@ libraries:
    version: "latest"
 
 builtins:
- - django_wsgi: on
  - deferred: on
-
-env_variables:
-   DJANGO_SETTINGS_MODULE: 'lipid2.settings'
 
 handlers:
  - url: /static

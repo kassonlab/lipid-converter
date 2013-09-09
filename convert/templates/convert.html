@@ -2,10 +2,28 @@
 
 {% block content %}
 <h2>[ convert ]</h2>
-<form action="/convert/convert/" method="post" enctype="multipart/form-data">{% csrf_token %}
+<form action="/convert" method="post" enctype="multipart/form-data">
   <ul>
-    {{ form.as_ul }}
+    Source forcefield: 
+    <select name="ff_from">
+      <option value="charmm36">Charmm36</option>
+      <option value="berger" selected>Berger</option>
+      <option value="gromos43a1">Gromos43a1</option>
+    </select>
+    <br>
+    Target forcefield:
+    <select name="ff_to">
+      <option value="charmm36" selected>Charmm36</option>
+      <option value="berger">Berger</option>
+      <option value="gromos43a1">Gromos43a1</option>
+    </select>
+    <br>
+    Email address for results:
+    <input type="text" name="email" value="" id="email" maxlength="100" />
+    <br>
+    Coordinate (gro/pdb) file:
+    <input type="file" name="coords">  
   </ul>
-<input type="submit" name="submit" value="Convert">
+  <input type="submit" name="submit" value="Convert">
 </form>
 {% endblock %}

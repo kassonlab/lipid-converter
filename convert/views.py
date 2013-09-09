@@ -6,6 +6,7 @@ from forms import ConvertForm
 from transform import lipid_converter
 from storage import *
 from google.appengine.ext import deferred
+from google.appengine.api import background_thread
 
 def main(request):
     return render_to_response('base.html')
@@ -15,10 +16,14 @@ def convert(request):
         form = ConvertForm(request.POST,request.FILES)
         
         if form.is_valid():
+            size = int(request.META['CONTENT_LENGTH'])
+            if size>512000:
+                return HttpResponseRedirect('/convert/error')
             
             ff_from = form.cleaned_data['ff_from']
             ff_to = form.cleaned_data['ff_to']
             email = form.cleaned_data['email']
+            
             f  = request.FILES['pdb'].read()
             fn = request.FILES['pdb'].name
             #print ff_from
@@ -35,10 +40,14 @@ def convert(request):
             # return the result
             
             deferred.defer(lipid_converter,fn,ff_from,ff_to,email)
+            #t = background_thread.BackgroundThread(target=lipid_converter,
+             #                                      args=[fn,ff_from,
+              #                                           ff_to,email])
+            t.start()
             #foo = lipid_converter(fn,ff_from,ff_to)
             #print foo
             # Redirect to a result page after post to avoid duplicates
-            return HttpResponseRedirect('/convert/results/%s'%email)
+            return HttpResponseRedirect('/convert/results/%s/'%email)
     else:
         form = ConvertForm()
 
@@ -105,3 +114,6 @@ def get(request,file_id):
     response['Content-Disposition'] = 'attachment; ' + filename_header
 
     return response
+
+def error(request):
+    return render_to_response('error.html')

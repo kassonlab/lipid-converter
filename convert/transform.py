@@ -1,13 +1,28 @@
-import sys,random,math,re,os
-from structure import Structure
+import sys
+import unicodedata
+from hashlib import sha1
+
+from google.appengine.api import mail
+import cloudstorage as gcs
+
 import Mapping
 import Convert
 import Sorting
-import cloudstorage as gcs
-from google.appengine.api import mail
+from structure import Structure
 from storage import *
-from hashlib import sha1
-import unicodedata
+
+def finish():
+    return 0
+
+def response_mail(response_string,email):
+
+    print response_string
+
+    mail.send_mail(sender='per.larsson@sbc.su.se',
+                   to=email,
+                   subject='lipid-conversion-results',
+                   body=response_string)
+    
 
 def lipid_converter(filename,ff_from,ff_to,email):
     
@@ -34,11 +49,11 @@ def lipid_converter(filename,ff_from,ff_to,email):
             res = sorting[resn].sort(res)
             out.extend(res)
         else:
-            print "No mapping between %s and %s for residue %s was found"%(ff_from,ff_to,resn)
-            print "Bailing out..."
-            sys.exit(0)
+            error = "No mapping between %s and %s for residue %s %d was found\n"%(ff_from,ff_to,resn,resi)
+            error = error + "Maybe you need to rename from %s to POP{C|E|S|G}\n"%resn
+            response_mail(error,email)
+            return 0
 
-    
     formatted_out = ""
     formatted_out = formatted_out + 'Transformed from %s to %s\n'%(ff_from,ff_to)
     formatted_out = formatted_out + '%5d\n'%len(out)
@@ -59,12 +74,9 @@ def lipid_converter(filename,ff_from,ff_to,email):
     save_to_cloud(formatted_out,token.hexdigest())
     
     # Send mail from here for now
-    dn = 'lipid-converter.appspot.com/convert/download/%s'%token.hexdigest()
-    
+    dn = 'lipid-converter.appspot.com/download/%s'%token.hexdigest()
     download_link = dn
-    mail.send_mail(sender='per.larsson@sbc.su.se',
-                   to=email,
-                   subject='lipid-conversion-results',
-                   body=download_link)
-    
+
+    response_mail(download_link,email)
+    #print token.hexdigest()
     
