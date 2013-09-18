@@ -1,0 +1,585 @@
+[ molecule ]
+POPC
+
+[ target ]
+POPG
+
+[ rename ]
+  C13	H13A
+  C15	H13B	
+  N	C13
+  C14	OC3
+  H12B	OC2
+   
+[ add ]
+  HO3	3	OC3	C13	C12
+  HO2	2	OC2	C12	C11
+   	 
+[ remove ]
+  H13A
+  H13B
+  H13C
+  H14A
+  H14B
+  H14C
+  H15A
+  H15B
+  H15C
+  
+[ end ]
+
+[ molecule ]
+POPC
+
+[ target ]
+POPE
+
+[ rename ]
+  C13	HN1
+  C14	HN2	
+  C15	HN3
+   
+[ add ]
+   	 
+[ remove ]
+  H13A
+  H13B
+  H13C
+  H14A
+  H14B
+  H14C
+  H15A
+  H15B
+  H15C
+
+[ end ]
+
+[ molecule ]
+POPC
+
+[ target ]
+POPS
+
+[ rename ]
+  C13	O13A
+  C15	O13B	
+  N	C13
+   
+[ add ]
+  N	N	C12	C11	C13
+  HN	123	N	C12	C13
+   	 
+[ remove ]
+  C14
+  H13A
+  H13B
+  H13C
+  H14A
+  H14B
+  H14C
+  H15A
+  H15B
+  H15C
+  H12B
+  
+[ end ]
+
+[ molecule ]
+POPC
+
+[ target ]
+DMPC
+
+[ rename ]
+   H91	H9R
+   H101	H10R
+
+[ add ]
+  H9S	S	C29	H9R	C210
+  H10S	S	C210	H10R	C211
+  H14T	T	C214	H14R	H14S
+  H14Z	Z	C314	H14X	H14Y
+	 
+[ remove ]
+  C215
+  H15R
+  H15S
+  C216
+  H16R
+  H16S
+  C217
+  H17R
+  H17S
+  C218
+  H18R
+  H18S
+  H18T
+  C315
+  H15X
+  H15Y
+  C316
+  H16X
+  H16Y
+  H16Z 
+   
+[ end ]
+
+[ molecule ]
+POPC
+
+[ target ]
+DPPC
+
+[ rename ]
+   H91	H9R
+   H101	H10R
+
+[ add ]
+  H9S	S	C29	H9R	C210
+  H10S	S	C210	H10R	C211	
+  H16T	T	C216	H16R	H16S
+     	 
+[ remove ]
+  C217
+  H17R
+  H17S
+  C218
+  H18R
+  H18S
+  H18T
+    
+[ end ]
+
+[ molecule ]
+POPC
+
+[ target ]
+DOPC
+
+[ rename ]
+   H91	H9R
+   H101	H10R
+
+[ add ]
+  C317	7	C316	H16X	H16Y
+  H17	XY	C317	C316	C315
+  C318	8	C317	H17X	H17Y
+  H18	XYZ	C318	C317	C316
+  		 
+[ remove ]
+  H16Z
+  H9Y
+  H10Y
+	 
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+POPC
+
+[ rename ]
+  HN1	C13
+  HN2	C14	
+  HN3	C15
+   
+[ add ]
+  H13	ABC	C13	C11	C12
+  H14	ABC	C14	C11	C12
+  H15	ABC	C15	C11	C12
+
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+POPS
+
+[ rename ]
+
+[ add ]
+  C13	3	C12	C11	C11	
+  O13	AB	C13	C12	N
+
+[ remove ]
+  H12B
+
+[ end ]
+
+[ molecule ]
+POPG
+
+[ target ]
+POPS
+
+[ rename ]
+  OC2	N
+  OC3	O13A
+   
+[ add ]
+  O13B	B	C13	O13A	C12
+  HN	123	N	HN1	C12
+     	 
+[ remove ]
+  HO2
+  HO3
+  H13A
+  H13B
+
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+POPG
+
+[ rename ]
+  N	C13
+  HN1	OC3
+  HN2	H13A
+  HN3	HO3
+  H12B	OC2  
+   
+[ add ]
+  H13B	B	C13	H13A	C12
+  HO2	2	OC2	C12	C11
+ 
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+DOPC
+
+[ rename ]
+  HN1	C13
+  HN2	C14	
+  HN3	C15
+  H91	H9R
+  H101	H10R
+
+[ add ]
+  H13	ABC	C13	C11	C12
+  H14	ABC	C14	C11	C12
+  H15	ABC	C15	C11	C12
+  C317	7	C316	C315	C314
+  H17	XY	C317	C316	C315
+  C318	8	C317	C316	C315
+  H18	XYZ	C318	C317	C316
+
+[ remove ]
+  H9Y
+  H10Y
+  H16Z
+
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+DMPC
+
+[ rename ]
+  HN1	C13
+  HN2	C14	
+  HN3	C15
+  H91	H9R
+  H101	H10R
+ 
+[ add ]
+  H13	ABC	C13	C11	C12
+  H14	ABC	C14	C11	C12
+  H15	ABC	C15	C11	C12
+  H9S	S	C29	C28	C27
+  H10S	S	C210	C29	C28
+  H14T	T	C214	H14R	H14S
+  H14Z	Z	C314	H14X	H14Y
+  
+[ remove ]
+  C215
+  H15R
+  H15S
+  C216
+  H16R
+  H16S
+  C217	
+  H17R
+  H17S
+  C218	
+  H18R
+  H18S
+  H18T
+  C315
+  H15X
+  H15Y
+  C316	
+  H16X
+  H16Y
+  H16Z  
+  
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+DOPC
+
+[ rename ]
+  HN1	C13
+  HN2	C14	
+  HN3	C15
+  H91	H9R
+  H101	H10R
+
+[ add ]
+  H13	ABC	C13	C11	C12
+  H14	ABC	C14	C11	C12
+  H15	ABC	C15	C11	C12
+  C317	7	C316	C315	C314
+  H17	XY	C317	C316	C315
+  C318	8	C317	C316	C315
+  H18	XYZ	C318	C317	C316
+
+[ remove ]
+  H9Y
+  H10Y
+  H16Z
+
+[ end ]
+
+[ molecule ]
+POPG
+
+[ target ]
+POPC
+
+[ rename ]
+  H13A 	C13
+  H13B	C15	
+  C13	N
+  OC3	C14
+  OC2	H12B
+   
+[ add ]
+  H13	ABC	C13	C11	C12
+  H14	ABC	C14	C11	C12	
+  H15	ABC	C15	C11	C12	
+     	 
+[ remove ]
+  HO3
+  HO2
+  
+[ end ]
+
+[ molecule ]
+POPG
+
+[ target ]
+POPS
+
+[ rename ]
+  OC2	N
+  OC3	O13A
+   
+[ add ]
+  O13B	B	C13	O13A	C12
+  HN	123	N	HN1	C12
+     	 
+[ remove ]
+  HO2
+  HO3
+  H13A
+  H13B
+
+[ end ]
+
+[ molecule ]
+POPG
+
+[ target ]
+POPE
+
+[ rename ]
+  C13	N
+  OC3	HN1
+  OC2	H12B
+	
+[ add ]
+  HN	23	N	HN1	C12
+ 
+[ remove ]
+  H13A
+  H13B
+  HO3
+  HO2
+  
+[ end ]
+
+[ molecule ]
+POPG
+
+[ target ]
+DOPC
+
+[ rename ]
+  C13	N
+  H13A	C13
+  H13B	C14
+  OC3	C15
+  HO3	H15A
+  OC2	H12B
+  H91	H9R
+  H101	H10R
+
+[ add ]
+  H13	ABC	C13	C12	C11
+  H14	ABC	C14	C12	C11
+  H15	BC	C15	C12	C11
+  C317	7	C316	H16X	H16Y
+  H17	XY	C317	C316	C315
+  C318	8	C317	H17X	H17Y
+  H18	XYZ	C318	C317	C316
+  
+[ remove ]
+  HO2
+  H16Z
+  H9Y
+  H10Y
+	 
+[ end ]
+
+[ molecule ]
+POPG
+
+[ target ]
+DMPC
+
+[ rename ]
+  C13	N
+  H13A	C13
+  H13B	C14
+  OC3	C15
+  HO3	H15A
+  OC2	H12B
+  H91	H9R
+  H101	H10R
+
+[ add ]
+  H13	ABC	C13	C12	C11
+  H14	ABC	C14	C12	C11
+  H15	BC	C15	C12	C11
+  H9S	S	C29	H9R	C28
+  H10S	S	C210	H10R	C29
+  H14T	T	C214	H14R	H14S
+  H14Z	Z	C314	H14X	H14Y
+	  
+[ remove ]
+  HO2
+  C215
+  H15R
+  H15S
+  C216
+  H16R
+  H16S
+  C217
+  H17R
+  H17S
+  C218
+  H18R
+  H18S
+  H18T
+  C315
+  H15X
+  H15Y
+  C316
+  H16X
+  H16Y
+  H16Z
+	 
+[ end ]
+
+[ molecule ]
+POPG
+
+[ target ]
+DPPC
+
+[ rename ]
+  C13	N
+  H13A	C13
+  H13B	C14
+  OC3	C15
+  HO3	H15A
+  OC2	H12B
+  H91	H9R
+  H101	H10R
+
+[ add ]
+  H13	ABC	C13	C12	C11
+  H14	ABC	C14	C12	C11
+  H15	BC	C15	C12	C11
+  H9S	S	C29	H9R	C28
+  H10S	S	C210	H10R	C29
+  H16T	T	C216	H16R	H16S
+  
+[ remove ]
+  HO2
+  C217
+  H17R
+  H17S
+  C218
+  H18R
+  H18S
+  H18T
+  	 
+[ end ]
+
+[ molecule ]
+POPS
+
+[ target ]
+POPC
+
+[ rename ]
+  HN1	C13
+  HN2	C14
+  HN3	C15
+  C13	H12B
+   
+[ add ]
+  H13	ABC	C13	C12	C11
+  H14	ABC	C14	C12	C11
+  H15	ABC	C15	C12	C11
+       	 
+[ remove ]
+  O13A
+  O13B
+  
+[ end ]
+
+[ molecule ]
+POPS
+
+[ target ]
+POPE
+
+[ rename ]
+  C13	H12B
+
+[ add ]
+  
+[ remove ]
+  O13A
+  O13B
+
+[ end ]

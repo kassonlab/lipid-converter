@@ -18,36 +18,52 @@ def setup(xAI,xAJ,xAK):
         sij.append(xAI[i]-xd)
         sb.append(xd-xAK[i])
         rij+=np.square(sij[i])
-        
+        #print rij
     rij = np.sqrt(rij)
+    #print sij
     
     sa.append(sij[1]*sb[2]-sij[2]*sb[1])
     sa.append(sij[2]*sb[0]-sij[0]*sb[2])
     sa.append(sij[0]*sb[1]-sij[1]*sb[0])
-    
+    #print sa
+    #import sys
+    #sys.exit()
     for i in range(3):
         sij[i]=sij[i]/rij
         ra+=np.square(sa[i])
-        
+    
     ra = np.sqrt(ra)
-
+    #print "ra=",ra
+    #import sys
+    #sys.exit()
     for i in range(3):
         sa[i]=sa[i]/ra
-        
+    
+    # Important to remember to reset sb here
+    sb = []
     sb.append(sa[1]*sij[2]-sa[2]*sij[1])
     sb.append(sa[2]*sij[0]-sa[0]*sij[2])
     sb.append(sa[0]*sij[1]-sa[1]*sij[0])
     
+    #print "sb=",sb
+    #import sys
+    #sys.exit()
     return sa,sb,sij
 
 def one_single_atom(xAI,xAJ,xAK):
     
     xH1 = []
+    #xAI=[-0.0677, -0.123, -0.0491]
+    #xAJ=[-0.0001,0.0064,-0.0491]
+    #xAK=[0.1499,-0.011,-0.0491]
+    #print xAI
+    #print xAJ
+    #print xAK
     sa,sb,sij = setup(xAI,xAJ,xAK)
     
     for i in range(3):
         xH1.append(xAI[i]+distH*np.sin(alphaH)*sb[i]-distH*np.cos(alphaH)*sij[i])
-        
+    
     return xH1
 
 def two_atoms(xAI,xAJ,xAK):
@@ -167,9 +183,10 @@ def get_xyz_coords(l,ai):
     for i in range(len(l)):
         try:
             if l[i] and l[i][0].strip()==ai:
-                xyz[0]=l[i][4]
-                xyz[1]=l[i][5]
-                xyz[2]=l[i][6]
+
+                xyz[0]=l[i][3][0]
+                xyz[1]=l[i][3][1]
+                xyz[2]=l[i][3][2]
         except TypeError:
             print "Error in get_xyz_coords(): ai=%s"%ai
             sys.exit()

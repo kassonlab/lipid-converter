@@ -10,7 +10,20 @@ gcs.set_default_retry_params(my_default_retry_params)
 
 BUCKET = '/lipid-converter/'
 
-def create_file(f,filename):
+def create_file(filename):
+    write_retry_params = gcs.RetryParams(backoff_factor=1.1)
+    
+    gcs_file = gcs.open(filename,
+                        'w',
+                        content_type='text/plain',
+                        options={'x-goog-meta-foo': 'foo',
+                                 'x-goog-meta-bar': 'bar'},
+                        retry_params=write_retry_params)
+
+    return gcs_file
+
+
+def create_file_and_write(f,filename):
     write_retry_params = gcs.RetryParams(backoff_factor=1.1)
     
     gcs_file = gcs.open(filename,
@@ -66,5 +79,5 @@ def save_to_cloud(f,filename):
       filename = BUCKET + filename
       
       #print filename
-      create_file(f,filename)
+      create_file_and_write(f,filename)
 

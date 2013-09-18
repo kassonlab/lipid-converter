@@ -3,7 +3,7 @@ import webapp2
 from google.appengine.ext.webapp import template
 from google.appengine.ext import deferred
 from storage import *
-from transform import lipid_converter
+from lipid_converter import lipid_converter_transform
 
 class BaseHandler(webapp2.RequestHandler):
     def render_template(self,filename,**template_args):
@@ -22,7 +22,7 @@ class ConvertPage(BaseHandler):
         filename = self.request.POST['coords'].filename
         filesize = int(self.request.headers['Content_Length'])
         
-        if filesize>512000:
+        if filesize>5242880:
             self.redirect('/error')
         else:
             save_to_cloud(self.request.get('coords'),filename)
@@ -32,7 +32,7 @@ class ConvertPage(BaseHandler):
             email = self.request.get('email')
             
             # start deferred tasks
-            _=deferred.defer(lipid_converter,filename,ff_from,ff_to,email)
+            _=deferred.defer(lipid_converter_transform,filename,ff_from,ff_to,email)
             
             self.redirect("/result?email="+email)
         
@@ -64,8 +64,8 @@ class DownloadPage(BaseHandler):
     
 class GetPage(BaseHandler):
     def post(self,file_id):
-        data = read_file(file_id)
         
+        data = read_file(file_id)
         self.response.out.write(data)
         
         t = 'text/plain'

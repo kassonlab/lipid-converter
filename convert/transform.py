@@ -1,82 +1,187 @@
+import os
+import glob
+import re
+from structure import Protein
+from forcefields import ff_transformations
+import aux
+
 import sys
-import unicodedata
-from hashlib import sha1
 
-from google.appengine.api import mail
-import cloudstorage as gcs
+directive = re.compile('^ *\[ *(.*) *\]')
 
-import Mapping
-import Convert
-import Sorting
-from structure import Structure
-from storage import *
-
-def finish():
-    return 0
-
-def response_mail(response_string,email):
-
-    print response_string
-
-    mail.send_mail(sender='per.larsson@sbc.su.se',
-                   to=email,
-                   subject='lipid-conversion-results',
-                   body=response_string)
-    
-
-def lipid_converter(filename,ff_from,ff_to,email):
-    
-    # read in this file
-    filename = BUCKET + filename
-    gcs_file = gcs.open(filename,'r')
-    data = gcs_file.read().split('\n')
+class transform():
+    def __init__(self):
+        self.transforms = {}
         
-    struct = Structure(data)
-    
-    mapping = Mapping.get(ff_from=ff_from,ff_to=ff_to)
-    sorting = Sorting.get(ff=ff_to)
-    
-    out = []
+    def read_transforms(self):
+        for ff in ff_transformations:
+            
+            fn = ""
 
-    for residue in struct.residues:
-        # Unpack to get the residue name
-        _,resn,resi,_,_,_,_ = residue[0]
-        resn = resn.strip()
+            try:
+                path = os.path.dirname(__file__)
+                path = os.path.join(path,ff,'transforms.top')
+                fn = open(path,'r')
+            except:
+                print "Could not open transform file for %s"%ff
+            
+            transf = []
+            hyd = []
+            ffout = ""
+            lipid = ""
+
+            for line in fn:
+                s = line.strip()
+                
+                if s.startswith("["):
+                    d = re.findall(directive,s)[0].strip().lower()
+                    
+                    # If we get to end of an entry, store it
+                    if d=='end':
+                        
+                        # Create a new dict for this entry
+                        m = {}
+                        m['transf']=transf
+                        if hyd:
+                            m['hyd']=hyd
+                        
+                            # Add this combination of lipid, ff and ffout
+                            # as a tuple key
+                        self.transforms[lipid,ff,ffout]=m
+                        
+                        # Reset these two
+                        transf = []
+                        hyd = []
+
+                    continue
+
+                if not s:
+                    continue
+
+                elif d == 'atoms':
+                    transf.append(s.split())
+                    
+                elif d == 'hydrogens':
+                    hyd.append(s.split())
+
+                elif d == 'molecule':
+                    lipid = s.split()[0]
+
+                elif d =='target':
+                    ffout = s.split()[0]
+
+    def do(self,prot,ffin,ffout):
+
+        new = Protein()
+        #print self.transforms['POPC','berger','charmm36']
+        #sys.exit()
+        for resnum in prot.get_residues():
+            residue = prot.get_residue_data(resnum)
+            #print "BAJS"
+            #print residue
+            #print "APA"
+            try:
+                lipid = residue[0][1]
+                transf_atoms = self.transforms[lipid,ffin,ffout]['transf']
+                try:
+                    hyd = self.transforms[lipid,ffin,ffout]['hyd']
+                except KeyError:
+                    hyd = ""
+            except:
+                print "No transformation from %s to %s for residue %s %d found"%(ffin,ffout,lipid,resnum)
+                sys.exit()
+
+            # Do the transformation
+            transformed = self.transform_residue(residue,transf_atoms)
+            #print transformed
+            #new.add_residue_data(transformed)
+            #new.write('test.pdb')
+            #sys.exit()
+            #print hyd
+            #sys.exit()
+            if hyd:
+                transformed = self.build_atoms(transformed,hyd)
+            
+            print transformed
+            #sys.exit()
+            # Add the result to a new protein
+            new.add_residue_data(transformed)
+            #new.write('test.pdb')
+            #print new.atname
+            #print new.coord
+            #sys.exit()
+        return new
+            
+    def transform_residue(self,residue,transf_atoms):
+        out = []
+        #print transf_atoms
+        for i in range(len(residue)):
+            ain = residue[i][0]
+            
+            for j in range(len(transf_atoms)):
+                #print ain,transf_atoms[j][1]
+                if ain == transf_atoms[j][0]:
+                    aout = transf_atoms[j][1]
+                    
+                    resn = residue[i][1]
+                    resi = residue[i][2]
+                    coords = residue[i][3]
+
+                    out.append((aout,resn,resi,coords))
+                    #print ain,aout,i,j
+                    break
+        #print out
+        #sys.exit()
+        return out
+
+    def build_atoms(self,residue,hyd):
         
-        # Do the transformation 
-        if resn in mapping.keys():
-            res = mapping[resn].convert(residue)
-            res = sorting[resn].sort(res)
-            out.extend(res)
-        else:
-            error = "No mapping between %s and %s for residue %s %d was found\n"%(ff_from,ff_to,resn,resi)
-            error = error + "Maybe you need to rename from %s to POP{C|E|S|G}\n"%resn
-            response_mail(error,email)
-            return 0
+        for i in range(len(hyd)):
+            
+            # Get the data for building atoms
+            name,suffix,ai,aj,ak = hyd[i]
+            
+            # Number of atoms to build is based on the length of the
+            # suffix string
+            num = len(suffix)
+            
+            xai = aux.get_xyz_coords(residue,ai)
+            xaj = aux.get_xyz_coords(residue,aj)
+            xak = aux.get_xyz_coords(residue,ak)
 
-    formatted_out = ""
-    formatted_out = formatted_out + 'Transformed from %s to %s\n'%(ff_from,ff_to)
-    formatted_out = formatted_out + '%5d\n'%len(out)
-    
-    count = 1
-    for atom in out:
-        at,resn,resi,chain,x,y,z = atom
-        formatted_out = formatted_out + "%5d%-5s%5s%5d%8.3f%8.3f%8.3f\n"%(resi%1e5,resn,at,count%1e5,x,y,z)
-        count = count + 1
+            pos   = aux.get_pos_in_list(residue,ai)
+            resn  = aux.get_resn(residue,ai)
+            resi  = aux.get_resi(residue,ai)
 
-    formatted_out = formatted_out + struct.groBox()+'\n'
-    
-    # For some reason we need to decode from unicode to ascii here
-    # Is this safe to do?
-    formatted_out = unicodedata.normalize('NFKD', formatted_out).encode('ascii','ignore')
-    
-    token = sha1(email)
-    save_to_cloud(formatted_out,token.hexdigest())
-    
-    # Send mail from here for now
-    dn = 'lipid-converter.appspot.com/download/%s'%token.hexdigest()
-    download_link = dn
+            if num==1:
+                x1 = aux.one_single_atom(xai,xaj,xak)
+                x1_name = name
+                residue.insert(pos+1,(x1_name,resn,resi,(x1[0],x1[1],x1[2])))
 
-    response_mail(download_link,email)
-    #print token.hexdigest()
+            elif num==2:
+                x1,x2 = aux.two_atoms(xai,xaj,xak)
+                x1_name = name+suffix[0]
+                x2_name = name+suffix[1]
+                residue.insert(pos+1,(x1_name,resn,resi,(x1[0],x1[1],x1[2])))
+                residue.insert(pos+2,(x2_name,resn,resi,(x2[0],x2[1],x2[2])))
+
+            elif num==3:
+                x1,x2,x3 = aux.three_atoms(xai,xaj,xak)
+                x1_name = name+suffix[0]
+                x2_name = name+suffix[1]
+                x3_name = name+suffix[2]
+                residue.insert(pos+1,(x1_name,resn,resi,(x1[0],x1[1],x1[2])))
+                residue.insert(pos+2,(x2_name,resn,resi,(x2[0],x2[1],x2[2])))
+                residue.insert(pos+2,(x3_name,resn,resi,(x3[0],x3[1],x3[2])))
+            else:
+                print "Need to specify either 1,2 or 3 hydrogens to construct around central atom %s"%ai
+                print "Currently it is %d"%num
+                print "Bailing out..."
+                
+                sys.exit()
+        #print residue
+        return residue
+        
+
+    
     
