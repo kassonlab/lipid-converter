@@ -28,8 +28,8 @@ hr.clear {visibility:hidden;clear:both;}
 
 #wrap {width:980px; margin:20px auto; padding:0;}
 /*#header {width:680px; margin:0 0 30px 20px; height:120px; padding-left:200px; background:transparent url(images/logo.jpg) top left no-repeat;}*/
-#header {width:680px; margin:0 0 30px 20px; height:120px; padding-left:200px; background:transparent;}*/
-#content {width:460px; margin-left:250px;}
+#header {width:680px; margin:0 0 30px 20px; height:120px; padding-left:200px; background:transparent;}
+#content {width:460px; margin-left:250px}
 #content .meta {padding:10px; text-align:right; text-transform:uppercase; font-size:0.8em; line-height:1.4em;}
 
 #sidebar {padding:0; float:left; width:200px;}

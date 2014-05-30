@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>[ help ]</h2>
+In transformation mode, the following combinations are available:<p>
+<table border="1">
+<tr>
+<td>Forcefield 1</td>
+<td>Forcefield 2</td>
+<td>Lipids in input file</td>
+</tr>
+<tr>
+<td>Berger</td>
+<td>CHARMM36</td>
+<td>POPC,POPE,POPG,POPS,DMPC,DOPC,DPPC</td>
+</tr>
+<tr>
+<td>Gromos43A1-S3</td>
+<td>...</td>
+<td>POPC,DMPC,DOPC,DPPC,DLPC</td>
+</tr>
+<tr>
+<td>Gromos53A6</td>
+<td>...</td>
+<td>POPC,POPG,DMPC,DPPC</td>
+</tr>
+<tr>
+<td>Gromos54A7</td>
+<td>...</td>
+<td>POPC,POPS,DMPC,DOPC,DPPC</td>
+</tr>
+<tr>
+<td>Berger</td>
+<td>Gromos43A1-S3</td>
+<td>POPC,DMPC,DOPC,DPPC</td>
+</tr>
+</table>
+<p>
+In conversion mode, the following combinations are available:<p>
+<table border="1">
+<tr>
+<td>Forcefield</td>
+<td>Input lipid</td>
+<td>Output lipid</td>
+</tr>
+<tr>
+<td>CHARMM36</td>
+<td>POPC</td>
+<td>POPE,POPG,POPS,DOPC,DMPC,DPPC</td>
+</tr>
+<tr>
+<td>...</td>
+<td>POPE</td>
+<td>POPC,POPG,POPS,DOPC,DMPC,DPPC</td>
+</tr>
+<tr>
+<td>...</td>
+<td>POPG</td>
+<td>POPC,POPE,POPS,DOPC,DMPC,DPPC</td>
+</tr>
+<tr>
+<td>...</td>
+<td>POPS</td>
+<td>POPC,POPE</td>
+</tr>
+<tr>
+<td>Gromos43A1-S3</td>
+<td>POPC</td>
+<td>POPE,DOPC,DMPC,DPPC,DLPC</td>
+</tr>
+<tr>
+<td>...</td>
+<td>POPE</td>
+<td>POPC,DOPC,DMPC,DPPC,DLPC</td>
+</tr>
+<tr>
+<td>...</td>
+<td>DMPC</td>
+<td>POPC,POPE,DOPC,DPPC,DLPC</td>
+<tr>
+<td>...</td>
+<td>DOPC</td>
+<td>POPC,POPE,DMPC,DPPC,DLPC</td>
+<tr>
+<td>...</td>
+<td>DPPC</td>
+<td>POPC,POPE,DMPC,DOPC,DLPC</td>
+<tr>
+<td>...</td>
+<td>DLPC</td>
+<td>POPC,POPE,DMPC,DPPC,DOPC</td>
+</table>
+
+<p>
+If something isn't working as expected, please either download the python 
+source code and try that, or send a mail to pl6n__{at}__virginia.edu, and 
+we will try to help out
+
+{% endblock %}

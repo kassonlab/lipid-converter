@@ -485,3 +485,245 @@ charmm36
   H12	    XYZ		C312	C311	C313
   
 [ end ]
+
+[ molecule ]
+POPC
+
+[ target ]
+berger
+
+[ atoms ]
+ N4	N   
+ C5	CA  
+ C1	CN1 
+ C2	CN2 
+ C3	CN3 
+ C6	CB  
+ P8	P   
+ OM9	OB  
+ OM10	OC  
+ OS7	OA  
+ OS11	OD  
+ C12	CC  
+ C13	CD  
+ OS14	OG  
+ C15	C2A 
+ O16	OH  
+ C17	C2B 
+ C34	CE  
+ OS35	OE  
+ C36	C1A 
+ O37	OF  
+ C38	C1B 
+ C18	C2C 
+ C19	C2D 
+ C20	C2E 
+ C21	C2F 
+ C22	C2G 
+ C23	C2H 
+ C24	C2I 
+ C25	C2J 
+ C26	C2K 
+ C27	C2L 
+ C28	C2M 
+ C29	C2N 
+ C30	C2P 
+ C31	C2Q 
+ C33	C2R 
+ C39	C1C 
+ C40	C1D 
+ C41	C1E 
+ C42	C1F 
+ C43	C1G 
+ C44	C1H 
+ C45	C1I 
+ C49	C1J 
+ C47	C1K 
+ C48	C1L 
+ C49	C1M 
+ C50	C1N 
+ C51	C1O 
+ C52	C1P 
+
+[ end ] 
+
+[ molecule ]
+DMPC
+
+[ target ]
+berger 
+
+[ atoms ]
+ N4	N  
+ C1	CA 
+ C2	CB 
+ C3	CC 
+ C5	CD 
+ C6	CE 
+ P8	P  
+ OM9	OB 
+ OM10	OC 
+ OS11	OD 
+ OS7	OA 
+ C12	CF 
+ C13	CG 
+ OS14	OE 
+ C15	C2A
+ O16	OF 
+ C17	C2B
+ C30	CH 
+ OS31	OH 
+ C32	C1A
+ O33	OH 
+ C34	C1B
+ C18	C2C
+ C19	C2D
+ C20	C2E
+ C21	C2F
+ C22	C2G
+ C23	C2H
+ C24	C2I
+ C25	C2J
+ C26	C2K
+ C27	C2L
+ C28	C2M
+ C29	C2N
+ C35	C1C
+ C36	C1D
+ C37	C1E
+ C38	C1F
+ C39	C1G
+ C40	C1H
+ C41	C1I
+ C42	C1J
+ C43	C1K
+ C44	C1L
+ C45	C1M
+ C46	C1N
+
+[ end ]
+
+[ molecule ]
+DOPC
+
+[ target ]
+berger
+
+[ atoms ]
+ N4     N4
+ C5     C5
+ C1     C1
+ C2     C2
+ C3     C3
+ C6     C6
+ P8     P8
+ OM9	O9  
+ OM10	O10 
+ OS7	O7  
+ OS11	O11 
+ C12    C12
+ C13    C13
+ OS14	O14 
+ C15    C15
+ O16    O16
+ C17    C17
+ C34	C32 
+ OS35	O33 
+ C36	C34 
+ O37	O35 
+ C38	C36 
+ C18    C18
+ C19    C19
+ C20    C20
+ C21    C21
+ C22    C22
+ C23    C23
+ C24    C24
+ C25    C25
+ C26    C26
+ C27    C27
+ C28    C28
+ C29    C29
+ C30    C30
+ C31    C31
+ C32	CA3 
+ C33	CA4 
+ C39	C37 
+ C40	C38 
+ C41	C39 
+ C42	C40 
+ C43	C41 
+ C44	C42 
+ C45	C43 
+ C46	C44 
+ C47	C45 
+ C48	C46 
+ C49	C47 
+ C50	C48 
+ C51	C49 
+ C52	C50 
+ C53	C51 
+ C54	C52 
+
+[ end ]
+
+[ molecule ]
+DPPC
+
+[ target ]
+berger 
+
+[ atoms ]
+ N4     N4
+ C1     C1
+ C2     C2
+ C3     C3
+ C5     C5
+ C6     C6
+ P8     P8
+ OM9	O9  
+ OM10	O10 
+ OS11	O11 
+ OS7	O7  
+ C12    C12
+ C13    C13
+ OS14	O14
+ C15    C15
+ O16    O16
+ C17    C17
+ C32    C32
+ OS33	O33
+ C34    C34
+ O35    O35
+ C36    C36
+ C18    C18
+ C19    C19
+ C20    C20
+ C21    C21
+ C22    C22
+ C23    C23
+ C24    C24
+ C25    C25
+ C26    C26
+ C27    C27
+ C28    C28
+ C29    C29
+ C30    C30
+ C31    C31
+ C37    C37
+ C38    C38
+ C39    C39
+ C40    C40
+ C41    C41
+ C42    C42
+ C43    C43
+ C44    C44
+ C45    C45
+ C46    C46
+ C47    C47
+ C48    C48
+ C49    C49
+ C50    C50
+
+[ end ]
+

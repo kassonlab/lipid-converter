@@ -76,54 +76,41 @@ class convert():
                 elif d =='target':
                     lout = s.split()[0]
 
-    def do(self,prot,ff,lin,lout,n):
+    #def do(self,prot,ff,lin,lout,n):
 
-        new = Protein()
-        #print self.transforms['POPC','berger','charmm36']
-        #sys.exit()
-        for resnum in prot.get_residues():
-            if resnum%n==0:
-                
-                residue = prot.get_residue_data(resnum)
-
-                try:
-                    lipid = residue[0][1]
-                    add_atoms = self.conversions[ff,lin,lout]['add']
-                    rename_atoms = self.conversions[ff,lin,lout]['rename']
-                    remove_atoms = self.conversions[ff,lin,lout]['remove']
-                except:
-                    print "No conversion between %s and %s in %s found"%(lin,lout,ff)
-                    sys.exit()
-
-            # Do the conversions
-                transformed = self.remove_atoms(residue,remove_atoms)
-            #new.add_residue_data(transformed)
-            #new.write('test.pdb')
-            #sys.exit()
-                transformed = self.rename_atoms(transformed,rename_atoms)
-            #new.add_residue_data(transformed)
-            #new.write('test.pdb')
-            #sys.exit()
-                transformed = self.build_atoms(transformed,add_atoms)
-            #new.add_residue_data(transformed)
-            #new.write('test.pdb')
-            #sys.exit()
-                transformed = self.update_resname(transformed,lout)
-                            #print transformed
-                            #
-            #sys.exit()
-            #print hyd
-            #sys.exit()
+    #    new = Protein()
+    #    convert_count = 0
+        
+    #    for resnum in prot.get_residues():
             
-            #print transformed
-            #sys.exit()
-            # Add the result to a new protein
-                new.add_residue_data(transformed)
-            #new.write('test.pdb')
-            #print new.atname
-            #print new.coord
-            #sys.exit()
-        return new
+    #        residue = prot.get_residue_data(resnum)
+    #        resname = residue[0][1]
+            #print residue
+            
+    #        if resname == lin:
+    #            convert_count = convert_count + 1
+            
+    #            if convert_count%n==0 and resname==lin:
+    #                try:
+    #                    lipid = residue[0][1]
+    #                    add_atoms = self.conversions[ff,lin,lout]['add']
+    #                    rename_atoms = self.conversions[ff,lin,lout]['rename']
+    #                    remove_atoms = self.conversions[ff,lin,lout]['remove']
+    #                except:
+    #                    print "No conversion between %s and %s in %s found"%(lin,lout,ff)
+    #                    sys.exit()
+                    
+                # Do the conversions
+    #            transformed = self.remove_atoms(residue,remove_atoms)
+    #            transformed = self.rename_atoms(transformed,rename_atoms)
+    #            transformed = self.build_atoms(transformed,add_atoms)
+    #            transformed = self.update_resname(transformed,lout)
+    #        else:
+    #            transformed = residue
+
+    #        new.add_residue_data(transformed)
+        
+    #    return new
             
     def remove_atoms(self,residue,remove_atoms):
         
@@ -151,12 +138,15 @@ class convert():
 
 
     def rename_atoms(self,residue,rename_atoms):
+
+        atoms = [i[0].strip() for i in residue]
+        
         for i in range(len(rename_atoms)):
             ai = rename_atoms[i][0]
             aout = rename_atoms[i][1]
 
-            for j in range(len(residue)):
-                aj = residue[j][0]
+            for j in range(len(atoms)):
+                aj = atoms[j]
                 
                 if ai == aj:
                     #print ai,aout

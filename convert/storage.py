@@ -37,7 +37,11 @@ def create_file_and_write(f,filename):
     #if isinstance(f,str):
     #    gcs_file.write('%s'%f)
     #else:
-    gcs_file.write(f)
+    data = f.read(65536)
+    while data:
+        gcs_file.write(data)
+        data=f.read(65536)
+    #gcs_file.write(f)
     #gcs_file.write(f)
     #gcs_file.write('f'*1024*1024 + '\n')
     gcs_file.close()

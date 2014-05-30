@@ -7,6 +7,7 @@ from forcefields import ff_sortings
 from storage import *
 
 import cloudstorage as gcs
+import gcs_data
 
 Vsites = ['MN1','MN2']
 directive = re.compile('^ *\[ *(.*) *\]')
@@ -95,7 +96,7 @@ class Sort:
 
 
 class Protein(Sort):
-    def __init__(self,file_in=None,debug=0):
+    def __init__(self,dyn=None,debug=0,resstart=-1,resend=-1):
         self.title=''
         self.atcounter = 0
         
@@ -122,16 +123,19 @@ class Protein(Sort):
         self.debug = debug
         
         # Read in the file based on its extension
-        if file_in:
-            filetype = os.path.splitext(file_in)[1]
+        if dyn:
+            print "structure.py:", dyn.filename
+            filetype = os.path.splitext(dyn.filename)[1]
             
             gro = re.compile('.gro')
             pdb = re.compile('.pdb')
             
-            f = BUCKET + file_in
-            gcs_file = gcs.open(f,'r')
-            data = gcs_file.read()
+            #f = BUCKET + file_in
+            #gcs_file = gcs.open(f,'r')
+            #data = gcs_file.read()
+            data = gcs_data.gcs_read_blob_resnum(dyn,resstart,resend)
             #print data
+            #sys.exit()
             #print "DATA"
             if gro.match(filetype):
                 self.read_gro(data)
@@ -147,7 +151,17 @@ class Protein(Sort):
 
     def read_pdb(self,data,debug=0):
         #lines = file(file_in).readlines()
-        lines = data
+        #print "READ PDB"
+        #print type(data)
+        #print data
+        data = str(data)
+        #return
+        lines = data.split('\n')
+        #lines = data
+        #print "FOO"
+        #print len(lines)
+        #print "READ PDB"
+        #return
         self.read_pdb_lines(lines,debug)
         
     def read_pdb_lines(self,lines,debug):
@@ -158,15 +172,19 @@ class Protein(Sort):
         #foot = re.compile('(CONECT |TER  |MASTER|END)')
         #element = re.compile('[A-Za-z ][A-Za-z]')
         for line in lines:
+            #print line
             if atom_hetatm.match(line):
                 line = line[:-1]
+                #print "APA"
+                #print line
                 #self.label.append(line[0:6])
                 #self.atnum.append(int(line[6:12]))
                 self.atname.append(line[12:16].strip())
                 #self.atalt.append(line[16:17])
                 self.resname.append(line[17:21].strip())
                 #self.chain.append(line[21])
-                self.resnum.append(int(line[22:26]))
+                self.resnum.append(int(line[22:27]))
+                #print line[22:27]
                 #self.resext.append(line[27])
                 self.coord.append((float(line[30:38])/10, float(line[38:46])/10, float(line[46:54])/10))
                 #self.occ.append(float(line[54:60]))
@@ -187,10 +205,13 @@ class Protein(Sort):
             #    self.footer.append(line[:-1])
             #elif title.match(line):
             #    self.title = self.title + line[10:-1].strip() + " "
-
+                
         if debug:
             return len(self.atnum),self.atcounter
-                            
+                
+        #print "READ PDB LINES"
+        #print self.resnum
+            
     def read_gro(self,data,debug=0):
         #lines = file(file_in).readlines()
         lines = data.split('\n')
@@ -201,22 +222,31 @@ class Protein(Sort):
         #print lines[0]
         #print lines[1]
         #print "FOO"
-        self.title = lines[0][:-1]
-        self.atcounter = int(lines[1])
+        #self.title = lines[0][:-1]
+        #self.atcounter = int(lines[1])
         #print "HEJ"
         #print lines[1]
         #print lines[1][:-1]
         #print "HOPP"
         if self.debug:
-            print self.title
-            print self.atcounter
-            print lines[2][:-1],len(lines[2])
+            pass
+            #print self.title
+            #print self.atcounter
+            #print lines[0][:-1],len(lines[0])
         
         #print len(lines)
         #print self.atcounter
         #print "FFFFFFFFFFFFFFFFFFFFFFFFFFFF"
-        for line in lines[2:self.atcounter+3][:-1]:
-            self.resnum.append(int(line[0:5]))
+        #for line in lines[2:self.atcounter+3][:-1]:
+        for line in lines:
+            print line
+            print line[0:5],line[5:10],line[10:15],line[15:20]
+            try:
+                self.resnum.append(int(line[0:5]))
+            except ValueError:
+                print line
+                
+                
             self.resname.append(line[5:10].strip())
             self.atname.append(line[10:15].strip())
             self.atnum.append(int(line[15:20]))
@@ -224,18 +254,31 @@ class Protein(Sort):
             first_decimal = line.index('.')
             second_decimal = line[first_decimal+1:].index('.')
             incr = second_decimal + 1
-            self.coord.append((float(line[20:20+incr]), float(line[28:20+2*incr]), float(line[36:20+3*incr])))
+            print first_decimal, second_decimal, incr
+            print line[20:20+incr]
+            print line[20+incr:20+2*incr]
+            print line[20+2*incr:20+3*incr]
+            self.coord.append((float(line[20:20+incr]), float(line[20+incr:20+2*incr]), float(line[20+2*incr:20+3*incr])))
             #print line
             # are there velocities
             #if len(line) == 68:
             #    self.velocity.append((float(line[44:20+4*incr])*10., float(line[52:5*incr])*10., float(line[60:6*incr])*10.))
             #else:
             #    self.velocity.append((0.0,0.0,0.0))
-    
+            self.atcounter = self.atcounter + 1
+
     def get_residues(self):
         res = np.unique(self.resnum)
         return res
 
+    # Returns the residue numbers from residue_start
+    def get_last_n_residues(self,residue_start):
+        res = self.get_residues()
+        return res[residue_start:]
+
+    def get_numres(self):
+        return len(self.get_residues())
+    
     # Return data for residue resi
     def get_residue_data(self,resi):
         out = []
@@ -255,7 +298,15 @@ class Protein(Sort):
                             #self.b[i]))
                 
         return out
-                
+        
+    def delete_all_residues(self):
+        self.resnum = []
+        self.resname = []
+        self.atname = []
+        self.coord = []
+
+        self.atcounter = 0
+    
     def add_residue_data(self,residue):
         
         for i in range(len(residue)):
@@ -279,6 +330,10 @@ class Protein(Sort):
 
         f.close()
 
+    def print_struct(self):
+        for i in range(self.atcounter):
+            print "%s %s %d %f %f %f"%(self.atname[i],self.resname[i],self.resnum[i],self.coord[i][0],self.coord[i][1],self.coord[i][2])
+    
     def write_pdb_line(self,file_out,i):
         label = 'ATOM  '
         atalt = ' '
@@ -292,7 +347,7 @@ class Protein(Sort):
         # This isn't the strict pdb format string, but it lets us
         # write pdb-files that have 4-letter long reside codes
         # and 5-numbered residue numbers
-        file_out.write('%-6s%5d %-4s%1s%4s %4d   %8.3f%8.3f%8.3f%6.2f%6.2f          %2s%2s\n'%(label,i+1,self.atname[i],atalt,self.resname[i],self.resnum[i],self.coord[i][0]*10.,self.coord[i][1]*10.,self.coord[i][2]*10.,occ,b,blank,elem)) 
+        file_out.write('%-6s%5d %4s%1s%-4s %4d    %8.3f%8.3f%8.3f%6.2f%6.2f          %2s%2s\n'%(label,i+1,self.atname[i],atalt,self.resname[i],self.resnum[i],self.coord[i][0]*10.,self.coord[i][1]*10.,self.coord[i][2]*10.,occ,b,blank,elem)) 
         
     def write_gro(self,file_out):
         f = open(file_out,'w')

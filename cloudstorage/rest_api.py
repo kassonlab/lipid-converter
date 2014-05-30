@@ -153,8 +153,6 @@ class _RestApi(object):
     token = yield self.get_token_async()
     headers['authorization'] = 'OAuth ' + token
 
-    deadline = deadline or self.retry_params.urlfetch_timeout
-
     retry = False
     resp = None
     try:

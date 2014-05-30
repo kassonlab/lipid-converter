@@ -11,6 +11,8 @@ application = webapp2.WSGIApplication([
         ('/download/(.*)',DownloadPage),
         ('/get/(.*)',GetPage),
         ('/error',ErrorPage),
+        ('/source',GetCodePage),
+        ('/no_file_error',NoFilePage),
         ],debug=True)
                                       
 
