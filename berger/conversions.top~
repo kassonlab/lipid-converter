@@ -1,0 +1,17 @@
+[ molecule ]
+POPE
+
+[ target ]
+POPC
+
+[ rename ]
+  H1	 C13
+  H2	 C14
+  H3	 C15
+
+[ add ]
+
+[ remove ]
+
+[ end ]
+
