@@ -335,12 +335,12 @@ class Protein(Sort):
         f = open(file_out,'w')
 
         for i in range(self.atcounter):
-            atnum = i % 100000
-            self.write_pdb_line(f,atnum)
+            atnum = i % 99999
+            self.write_pdb_line(f,i,atnum)
 
         f.close()
 
-    def write_pdb_line(self,file_out,i):
+    def write_pdb_line(self,file_out,i,atnum):
         label = 'ATOM  '
         atalt = ' '
         chain = ' '
@@ -353,7 +353,7 @@ class Protein(Sort):
         # This isn't the strict pdb format string, but it lets us
         # write pdb-files that have 4-letter long reside codes
         # and 5-numbered residue numbers
-        file_out.write('%-6s%5d %4s%1s%-4s %4d    %8.3f%8.3f%8.3f%6.2f%6.2f          %2s%2s\n'%(label,i+1,self.atname[i],atalt,self.resname[i],self.resnum[i],self.coord[i][0]*10.,self.coord[i][1]*10.,self.coord[i][2]*10.,occ,b,blank,elem)) 
+        file_out.write('%-6s%5d %4s%1s%-4s %4d    %8.3f%8.3f%8.3f%6.2f%6.2f          %2s%2s\n'%(label,atnum+1,self.atname[i],atalt,self.resname[i],self.resnum[i],self.coord[i][0]*10.,self.coord[i][1]*10.,self.coord[i][2]*10.,occ,b,blank,elem)) 
         
     def write_gro(self,file_out):
         f = open(file_out,'w')

@@ -353,7 +353,7 @@ class Protein(Sort):
         # This isn't the strict pdb format string, but it lets us
         # write pdb-files that have 4-letter long reside codes
         # and 5-numbered residue numbers
-        file_out.write('%-6s%5d %4s%1s%-4s %4d    %8.3f%8.3f%8.3f%6.2f%6.2f          %2s%2s\n'%(label,atnum,self.atname[i],atalt,self.resname[i],self.resnum[i],self.coord[i][0]*10.,self.coord[i][1]*10.,self.coord[i][2]*10.,occ,b,blank,elem)) 
+        file_out.write('%-6s%5d %4s%1s%-4s %4d    %8.3f%8.3f%8.3f%6.2f%6.2f          %2s%2s\n'%(label,atnum+1,self.atname[i],atalt,self.resname[i],self.resnum[i],self.coord[i][0]*10.,self.coord[i][1]*10.,self.coord[i][2]*10.,occ,b,blank,elem)) 
         
     def write_gro(self,file_out):
         f = open(file_out,'w')
@@ -362,13 +362,14 @@ class Protein(Sort):
         f.write('%d\n'%self.atcounter)
 
         for i in range(self.atcounter):
-            self.write_gro_line(f,i)
+            atnum = i % 99999
+            self.write_gro_line(f,i,atnum)
 
         f.write('%10.5f%10.5f%10.5f'%(0,0,0))
         f.close()
 
-    def write_gro_line(self,file_out,i):
-        file_out.write("%5d%-5s%5s%5d%8.3f%8.3f%8.3f\n"%(self.resnum[i]%1e5,self.resname[i],self.atname[i],i+1,self.coord[i][0],self.coord[i][1],self.coord[i][2]))
+    def write_gro_line(self,file_out,i,atnum):
+        file_out.write("%5d%-5s%5s%5d%8.3f%8.3f%8.3f\n"%(self.resnum[i]%1e5,self.resname[i],self.atname[i],atnum+1,self.coord[i][0],self.coord[i][1],self.coord[i][2]))
 
     def write(self,filename):
         filetype = os.path.splitext(filename)[1]
