@@ -1,55 +1,69 @@
 #/usr/bin/env python
 import sys
 import os
+import gflags
 from structure import Protein
 from transform import transform
 from convert import convert
-import argparse
 
-# Use argparse to parse command line options
-parser = argparse.ArgumentParser(description='Lipid-converter')
-parser.add_argument('-f','--input',required=True)
-parser.add_argument('-o','--output',required=True)
-parser.add_argument('-mode','--mode',default='transform',help='Transform or Convert')
-parser.add_argument('-ffin','--ffin',default='berger',help='Source force field')
-parser.add_argument('-ffout','--ffout',default='charmm36',help='Target force field')
-parser.add_argument('-lin','--lin',help='Input lipid')
-parser.add_argument('-lout','--lout',help='Output lipid')
-parser.add_argument('-n','--n',help='Convert every n-th lipid')
-parser.add_argument('-canonical','--canonical',action='store_true',help='Canonical force field sorting of output')
-parser.add_argument('-longresnum','--longresnum',action='store_true',help='Assume long residues numbers in pdb file')
+# Use gflags to get command line options
+FLAGS = gflags.FLAGS
 
-# Get the arguments
-args = parser.parse_args()
+gflags.DEFINE_string('mode','transform',
+                     'Do transformation or conversion')
+
+gflags.DEFINE_string('f','conf.pdb',
+                     'Input pdb structure')
+gflags.DEFINE_string('o','out.pdb',
+                     'Output pdb structure')
+
+gflags.DEFINE_string('ffin', 'berger',
+                     'source force field')
+gflags.DEFINE_string('ffout', 'charmm36',
+                     'target force field')
+
+gflags.DEFINE_string('lin', 'POPC',
+                     'input lipid')
+gflags.DEFINE_string('lout', 'POPG',
+                     'output lipid')
+gflags.DEFINE_integer('n', 1,
+                      'Convert every n-th lipid')
+
+gflags.DEFINE_bool('canonical',False,
+                   'Turn on canonical sorting')
+gflags.DEFINE_bool('longresnum',False,
+                   'Assume 5-digit residue numbers in pdb-files')
+
+argv = FLAGS(sys.argv)
 
 # Read in the input structure - pdb or gro based on file ending
-struct = Protein(args.input,args.longresnum,debug=0)
+struct = Protein(FLAGS.f,FLAGS.longresnum,debug=0)
 
 # Do conversion or transformation
-if args.mode == 'transform':
+if FLAGS.mode == 'transform':
     t = transform()
     t.read_transforms()
-    new_struct = t.do(struct,args.ffin,args.ffout)
-elif args.mode == 'convert':
+    new_struct = t.do(struct,FLAGS.ffin,FLAGS.ffout)
+elif FLAGS.mode == 'convert':
     t = convert()
     t.read_conversions()
-    new_struct = t.do(struct,args.ffin,args.lin,args.lout,args.n)
+    new_struct = t.do(struct,FLAGS.ffin,FLAGS.lin,FLAGS.lout,FLAGS.n)
 else:
     print "Either transform or convert please...!"
     sys.exit()
 
 # Does it make sense to sort here?
-if args.canonical:
+if FLAGS.canonical:
 
     # If we are changing from one forcefield to another, we are
     # sorting according to the output ff
-    if args.mode == 'transform':
-        ff_sort = args.ffout
+    if FLAGS.mode == 'transform':
+        ff_sort = FLAGS.ffout
     
     # And similarily, if we are changing a lipid type within a forcefield,
     # we sort on this ff (ie the input ff)
-    if args.mode == 'convert':
-        ff_sort = args.ffin
+    if FLAGS.mode == 'convert':
+        ff_sort = FLAGS.ffin
         
     # We also need a special trick for amber/lipids11, since the residue
     # names are identical between different lipids (the plug-and-play
@@ -67,4 +81,4 @@ if args.canonical:
     new_struct = new_struct.sort(ff_sort,resmap)    
 
 # Write out result
-new_struct.write(args.output)
+new_struct.write(FLAGS.o)
