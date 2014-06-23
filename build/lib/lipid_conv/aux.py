@@ -1,9 +1,12 @@
 import math
 import numpy as np
+import networkx as NX
 
 distH = 0.1
 alphaH = np.arccos(-1/3.0)
 s6 = 0.5 * np.sqrt(3.0)
+
+accepted_p_atoms = {'P','P8'}
 
 def setup(xAI,xAJ,xAK):
     rij = 0.0
@@ -183,7 +186,6 @@ def get_xyz_coords(l,ai):
     for i in range(len(l)):
         try:
             if l[i] and l[i][0].strip()==ai:
-
                 xyz[0]=l[i][3][0]
                 xyz[1]=l[i][3][1]
                 xyz[2]=l[i][3][2]
@@ -192,3 +194,41 @@ def get_xyz_coords(l,ai):
             sys.exit()
             
     return xyz
+
+
+# Get coords of P-atoms
+def get_p_coords(struct):
+    
+    p_coords = []
+    for resnum in struct.get_residues():
+        residue = struct.get_residue_data(resnum)
+        
+        for i in range(len(residue)):
+            #print residue[i][0]
+            if residue[i][0].strip() in accepted_p_atoms:
+                #print "APA"
+                #print residue[i][3]
+                #print p_xyz
+                p_coords.append(list(residue[i][3]))
+        #print residue
+        
+    #print p_coords
+    return p_coords
+
+
+# Calculate and return a distance matrix of all the coordinates in coords
+def contact_matrix(coords,cutoff=2.0):
+    coords = np.array(coords)
+    n,m = coords.shape
+    dist_mat = np.zeros((n,n),'d')
+    for d in xrange(m):
+        data = coords[:,d]
+        dist_mat += (data - data[:,np.newaxis])**2
+    return np.sqrt(dist_mat)<cutoff
+        
+def make_contact_graph(contact_mat):
+    #print contact_mat
+    return NX.Graph(contact_mat)
+
+def get_graph_components(graph):
+    return [np.sort(component) for component in NX.connected_components(graph)]

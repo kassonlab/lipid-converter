@@ -16,9 +16,9 @@ def transf(struct,ffin,ffout):
     new_struct = t.do(struct,ffin,ffout)
     return new_struct
 
-def conv(struct,ffin,lin,lout,n):
+def conv(struct,ffin,lin,lout,n,asymmetry):
     c = convert()
     c.read_conversions()
-    new_struct = c.do(struct,ffin,lin,lout,n)
+    new_struct = c.do(struct,ffin,lin,lout,n,asymmetry)
     return new_struct
 

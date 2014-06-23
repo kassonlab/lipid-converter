@@ -19,6 +19,6 @@ setup(
     license='LICENSE.txt',
     description='Useful descripton text',
     long_description=open('README.txt').read(),
-    install_requires=['NumPy >= 1.6','NetworkX >= 1.9'],
+    install_requires=['NumPy >= 1.6'],
 )
 

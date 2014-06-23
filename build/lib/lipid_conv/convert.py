@@ -74,46 +74,113 @@ class convert():
                 elif d =='target':
                     lout = l.split()[0]
 
-    def do(self,prot,ff,lin,lout,n):
+    def do(self,prot,ff,lin,lout,n,asymmetry):
 
         new = Protein()
 
         # Get the total number of residues
         total_resnum = len(prot.get_residues())
         
-        convert_count = 0
-        for resnum in prot.get_residues():
-            residue = prot.get_residue_data(resnum)
-            resname = residue[0][1]
+        # Treat the asymmetric case separetly
+        if asymmetry:
             
-            if resname == lin:
-                convert_count = convert_count + 1
+            print "Asymmetric conversion requested"
+            print "Building distance matrix of P-atoms"
+            
+            # Algoritm to implement (following N. Michaud-Agrawal et al,
+            # J. Comput. Chem. 32 (2011), 2319
 
-            # Is this a residue we want to change?
-            if convert_count%n==0 and resname == lin:
-                try:
-                    lipid = residue[0][1]
-                    add_atoms = self.conversions[ff,lin,lout]['add']
-                    rename_atoms = self.conversions[ff,lin,lout]['rename']
-                    remove_atoms = self.conversions[ff,lin,lout]['remove']
-                except:
-                    print "No conversion between %s and %s in %s found"%(lin,lout,ff)
-                    sys.exit()
-                    
-                # Do the conversions
-                transformed = self.remove_atoms(residue,remove_atoms)
-                transformed = self.rename_atoms(transformed,rename_atoms)
-                transformed = self.build_atoms(transformed,add_atoms)
-                transformed = self.update_resname(transformed,lout)
-                print "Converted residue %s %d to %s (total numres: %d)"%(lin,resnum,lout,total_resnum)
-            else:
-                transformed = residue
+            # 1. Get the coords of the P-atoms
+            p_coords = aux.get_p_coords(prot)
+            #print p_coords
+            
+            # 2. Calculate distance matrix for coords
+            distance_mat = aux.contact_matrix(p_coords)
+            
+            # 3. Identify the lipids in each leaflet
+            print "Attempting to identify individual leaflets"
+            graph = aux.make_contact_graph(distance_mat)
+            components = aux.get_graph_components(graph)
+ 
+            # 4. Convert each leaflet separately
+            print "Converting leaflets"
+            
+            convert_count = 0
+            lin_leaflets = lin.split(':')
+            n_leaflets = n.split(':')
+            
+            for i in range(len(components)):
                 
-            # Add the result to a new protein   
-            #print transformed
-            new.add_residue_data(transformed)
+                lin_i = lin_leaflets[i]
+                n_i = n_leaflets[i]
+                
+                for j in range(len(components[i])):
+                    print "leaflet %d, residue %d"%(i+1,components[i][j])
+                    
+                    for resnum in prot.get_residues():
+                        residue = prot.get_residue_data
+                        
+                        if resname == lin_i:
+                            convert_count = convert_count + 1
 
-        return new
+                        if convert_count%n_i==0 and resname == lin:
+                            try:
+                                lipid = residue[0][1]
+                                add_atoms = self.conversions[ff,lin,lout]['add']
+                                rename_atoms = self.conversions[ff,lin,lout]['rename']
+                                remove_atoms = self.conversions[ff,lin,lout]['remove']
+                            except:
+                                print "No conversion between %s and %s in %s found"%(lin,lout,ff)
+                                sys.exit()
+
+                    # Do the conversions                                                
+                            transformed = self.remove_atoms(residue,remove_atoms)
+                            transformed = self.rename_atoms(transformed,rename_atoms)
+                            transformed = self.build_atoms(transformed,add_atoms)
+                            transformed = self.update_resname(transformed,lout)
+                            print "Converted residue %s %d to %s (total numres: %d)"%(lin,resnum,lout,total_resnum)
+                        else:
+                            transformed = residue
+
+                        # Add the result to a new protein
+                        new.add_residue_data(transformed)
+                    
+            return new
+
+        
+        else:
+            convert_count = 0
+            for resnum in prot.get_residues():
+                residue = prot.get_residue_data(resnum)
+                resname = residue[0][1]
+                
+                if resname == lin:
+                    convert_count = convert_count + 1
+
+                # Is this a residue we want to change?
+                if convert_count%n==0 and resname == lin:
+                    try:
+                        lipid = residue[0][1]
+                        add_atoms = self.conversions[ff,lin,lout]['add']
+                        rename_atoms = self.conversions[ff,lin,lout]['rename']
+                        remove_atoms = self.conversions[ff,lin,lout]['remove']
+                    except:
+                        print "No conversion between %s and %s in %s found"%(lin,lout,ff)
+                        sys.exit()
+                    
+                    # Do the conversions
+                    transformed = self.remove_atoms(residue,remove_atoms)
+                    transformed = self.rename_atoms(transformed,rename_atoms)
+                    transformed = self.build_atoms(transformed,add_atoms)
+                    transformed = self.update_resname(transformed,lout)
+                    print "Converted residue %s %d to %s (total numres: %d)"%(lin,resnum,lout,total_resnum)
+                else:
+                    transformed = residue
+                
+                # Add the result to a new protein   
+                new.add_residue_data(transformed)
+
+            return new
             
     def remove_atoms(self,residue,remove_atoms):
         
