@@ -1,0 +1,953 @@
+[ molecule ]
+POPC
+
+[ target ]
+charmm36
+
+[ atoms ]
+ N	N	
+ CA	C12	
+ CN1	C13	
+ CN2	C14	
+ CN3	C15	
+ CB	C11	
+ P	P	
+ OB	O13	
+ OC	O14	
+ OA	O12	
+ OD	O11	
+ CC	C1	
+ CD	C2	
+ OG	O21	
+ C2A	C21	
+ OH	O22	
+ C2B	C22	
+ CE	C3	
+ OE	O31	
+ C1A	C31	
+ OF	O32	
+ C1B	C32	
+ C2C	C23	
+ C2D	C24	
+ C2E	C25	
+ C2F	C26	
+ C2G	C27	
+ C2H	C28	
+ C2I	C29	
+ C2J	C210	
+ C2K	C211	
+ C2L	C212	
+ C2M	C213	
+ C2N	C214	
+ C2O	C215	
+ C2P	C216	
+ C2Q	C217	
+ C2R	C218	
+ C1C	C33	
+ C1D	C34	
+ C1E	C35	
+ C1F	C36	
+ C1G	C37	
+ C1H	C38	
+ C1I	C39	
+ C1J	C310	
+ C1K	C311	
+ C1L	C312	
+ C1M	C313	
+ C1N	C314	
+ C1O	C315	
+ C1P	C316	
+  
+[ hydrogens ]
+ H12	    AB	C12	C11	C13	
+ H13	    ABC	C13	N	C12	
+ H14	    ABC	C14	N	C12
+ H15  	    ABC	C15	N	C12
+ H11  	    AB	C11	C12	O12
+ H    	    AB	C1	O11	C2	
+ HS	    S	C2	C1	C3
+ H2	    RS	C22	C21	C23
+ H	    XY	C3	C2	O31	
+ H2 	    XY	C32	C31	C33
+ H3	    RS	C23	C22	C24	
+ H4	    RS	C24	C23	C25
+ H5	    RS	C25	C24	C26
+ H6	    RS	C26	C25	C27
+ H7	    RS	C27	C26	C28
+ H8	    RS	C28	C27	C29
+ H91	    1	C29	C28	C27
+ H101       1	C210	C29	C28
+ H11	    RS	C211	C210	C212
+ H12	    RS	C212	C211	C213
+ H13	    RS	C213	C212	C214	
+ H14	    RS	C214	C213	C215	
+ H15	    RS	C215	C214	C216	
+ H16	    RS	C216	C215	C217
+ H17	    RS	C217	C216	C218
+ H18	    RST	C218	C217	C216
+ H3	    XY	C33	C32	C34	
+ H4	    XY	C34	C33	C35	
+ H5	    XY	C35	C34	C36	
+ H6	    XY	C36	C35	C37	
+ H7	    XY	C37	C36	C38	
+ H8	    XY	C38	C37	C39	
+ H9	    XY	C39	C38	C310
+ H10	    XY	C310	C39	C311	
+ H11	    XY	C311	C310	C312	
+ H12	    XY	C312	C311	C313	
+ H13	    XY	C313	C312	C314	
+ H14	    XY	C314	C313	C315	
+ H15	    XY	C315	C314	C316	
+ H16	    XYZ	C316	C315	C314	
+
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+charmm36
+
+[ atoms ]
+ N	N	
+ H1	HN1	
+ H2	HN2	
+ H3	HN3	
+ CA	C12	
+ CB	C11	
+ P	P	
+ OC	O13	
+ OD	O14	
+ OB	O11	
+ OA	O12	
+ CC	C1	
+ CD	C2	
+ OG	O21	
+ C2A	C21	
+ OH	O22	
+ C2B	C22	
+ CE	C3	
+ OE	O31	
+ C1A	C31	
+ OF	O32	
+ C1B	C32	
+ C2C	C23	
+ C2D	C24	
+ C2E	C25	
+ C2F	C26	
+ C2G	C27	
+ C2H	C28	
+ C2I	C29	
+ C2J	C210	
+ C2K	C211	
+ C2L	C212	
+ C2M	C213	
+ C2N	C214	
+ C2O	C215	
+ C2P	C216	
+ C2Q	C217	
+ C2R	C218	
+ C1C	C33	
+ C1D	C34	
+ C1E	C35	
+ C1F	C36	
+ C1G	C37	
+ C1H	C38	
+ C1I	C39	
+ C1J	C310	
+ C1K	C311	
+ C1L	C312	
+ C1M	C313	
+ C1N	C314	
+ C1O	C315	
+ C1P	C316	
+
+[ hydrogens ]
+ H12	    AB		C12	N	C11
+ H11	    AB		C11	C12	O12
+ H	    AB		C1	O11	C2
+ HS	    S		C2	C1	O21
+ H2	    RS		C22	C21	C23
+ H	    XY		C3	C2	O31	
+ H2	    XY		C32	C31	C33
+ H3	    RS		C23	C22	C21
+ H4	    RS		C24	C23	C22
+ H5	    RS		C25	C24	C23
+ H6	    RS		C26	C25	C24
+ H7	    RS		C27	C26	C25
+ H8	    RS		C28	C27	C26
+ H91	    1		C29	C28	C27
+ H101	    1		C210	C29	C28
+ H11	    RS		C211	C210	C29
+ H12	    RS		C212	C211	C210
+ H13	    RS		C213	C212	C211
+ H14	    RS		C214	C213	C212
+ H15	    RS		C215	C214	C213
+ H16	    RS		C216	C215	C214
+ H17	    RS		C217	C216	C215	
+ H18	    RST		C218	C217	C216
+ H3	    XY		C33	C32	C31
+ H4	    XY		C34	C33	C32
+ H5	    XY		C35	C34	C33
+ H6	    XY		C36	C35	C34
+ H7	    XY		C37	C36	C35
+ H8	    XY		C38	C37	C36
+ H9	    XY		C39	C38	C37
+ H10	    XY		C310	C39	C38
+ H11	    XY		C311	C310	C39
+ H12	    XY		C312	C311	C310
+ H13	    XY		C313	C312	C311
+ H14	    XY		C314	C313	C312
+ H15	    XY		C315	C314	C313
+ H16	    XYZ		C316	C315	C314
+ 
+[ end ]
+
+[ molecule ]
+POPG
+
+[ target ]
+charmm36
+
+[ atoms ]
+ CA 	C13	
+ O2 	OC3	
+ H2 	HO3	
+ C0 	C12	
+ O1 	OC2	
+ H1 	HO2	
+ CB 	C11	
+ P 	P	
+ OB 	O13	
+ OC 	O14	
+ OA 	O12	
+ OD 	O11	
+ CC 	C1	
+ CD 	C2	
+ OG 	O21	
+ C2A 	C21	
+ OH 	O22	
+ C2B 	C22	
+ CE 	C3	
+ OE 	O31	
+ C1A 	C31	
+ OF 	O32	
+ C1B 	C32	
+ C2C 	C23	
+ C2D 	C24	
+ C2E 	C25	
+ C2F 	C26	
+ C2G 	C27	
+ C2H 	C28	
+ C2I 	C29	
+ C2J 	C210	
+ C2K 	C211	
+ C2L 	C212	
+ C2M 	C213	
+ C2N 	C214	
+ C2O 	C215	
+ C2P 	C216	
+ C2Q 	C217	
+ C2R 	C218	
+ C1C 	C33	
+ C1D 	C34	
+ C1E 	C35	
+ C1F 	C36	
+ C1G	C37	
+ C1H 	C38	
+ C1I 	C39	
+ C1J 	C310	
+ C1K 	C311	
+ C1L 	C312	
+ C1M 	C313	
+ C1N 	C314	
+ C1O 	C315	
+ C1P 	C316	
+
+[ hydrogens ]
+ H13	    AB		C13	C12	OC3
+ H12A	    A		C12	C13	C11
+ H11	    AB		C11	C12	O12	
+ H	    AB		C1	O11	C2
+ HS	    S		C2	C1	O21
+ H2	    RS		C22	C21	C23
+ H	    XY		C3	C2	O31
+ H2	    XY		C32	C31	C33
+ H3	    RS		C23	C22	C24
+ H4	    RS		C24	C23	C25
+ H5	    RS		C25	C24	C26
+ H6	    RS		C26	C25	C27
+ H7	    RS		C27	C26	C28
+ H8	    RS		C28	C27	C29
+ H91	    1		C29	C28	C210
+ H101       1		C210	C29	C211
+ H11	    RS		C211	C210	C212
+ H12	    RS		C212	C211	C213	
+ H13	    RS		C213	C212	C214
+ H14	    RS		C214	C213	C215
+ H15	    RS		C215	C214	C216
+ H16	    RS		C216	C215	C217
+ H17	    RS		C217	C216	C218
+ H18	    RST		C218	C217	C216
+ H3	    XY		C33	C32	C34
+ H4	    XY		C34	C33	C35
+ H5	    XY		C35	C34	C36
+ H6	    XY		C36	C35	C37
+ H7	    XY		C37	C36	C38
+ H8	    XY		C38	C37	C39
+ H9	    XY		C39	C38	C310
+ H10	    XY		C310	C39	C311
+ H11	    XY		C311	C310	C312
+ H12	    XY		C312	C311	C313
+ H13	    XY		C313	C312	C314
+ H14	    XY		C314	C313	C315
+ H15	    XY		C315	C314	C316
+ H16	    XYZ		C316	C315	C314
+ 
+[ end ]
+
+[ molecule ]
+POPS
+
+[ target ]
+charmm36
+
+[ atoms ]
+ N	 N	
+ H1	 HN1	
+ H2   	 HN2	
+ H3   	 HN3	
+ CA   	 C12	
+ CF   	 C13	
+ OI  	 O13A	
+ OJ   	 O13B	
+ CB   	 C11	
+ P	 P	
+ OB	 O13	
+ OC	 O14	
+ OA	 O12	
+ OD	 O11	
+ CC	 C1	
+ CD	 C2	
+ OG	 O21	
+ C2A	 C21	
+ OH	 O22	
+ C2B	 C22	
+ CE	 C3	
+ OE	 O31	
+ C1A	 C31	
+ OF	 O32	
+ C1B	 C32	
+ C2C	 C23	
+ C2D	 C24	
+ C2E	 C25	
+ C2F	 C26	
+ C2G	 C27	
+ C2H	 C28	
+ C2I	 C29	
+ C2J	 C210	
+ C2K	 C211	
+ C2L	 C212	
+ C2M	 C213	
+ C2N	 C214	
+ C2O	 C215	
+ C2P	 C216	
+ C2Q	 C217	
+ C2R	 C218	
+ C1C	 C33	
+ C1D	 C34	
+ C1E	 C35	
+ C1F	 C36	
+ C1G	 C37	
+ C1H	 C38	
+ C1I	 C39	
+ C1J	 C310	
+ C1K	 C311	
+ C1L	 C312	
+ C1M	 C313	
+ C1N	 C314	
+ C1O	 C315	
+ C1P	 C316	
+  
+[ hydrogens ]
+ H12A	    A	C12	N	C13
+ H11	    AB	C11	C12	O12	
+ H	    AB	C1	O11	C2
+ HS	    S	C2	C1	O21
+ H2 	    RS	C22	C21	C23
+ H	    XY	C3	C2	O31	
+ H2	    XY	C32	C31	C33
+ H3	    RS	C23	C22	C24
+ H4	    RS	C24	C23	C25
+ H5	    RS	C25	C24	C26
+ H6	    RS	C26	C25	C27
+ H7	    RS	C27	C26	C28
+ H8	    RS	C28	C27	C29
+ H91	    1	C29	C28	C210
+ H101	    1	C210	C29	C211
+ H11	    RS	C211	C210	C212
+ H12	    RS	C212	C211	C213
+ H13	    RS	C213	C212	C214
+ H14	    RS	C214	C213	C215
+ H15	    RS	C215	C214	C216
+ H16	    RS	C216	C215	C217
+ H17	    RS	C217	C216	C218
+ H18	    RST	C218	C217	C216
+ H3	    XY	C33	C32	C34
+ H4	    XY	C34	C33	C35
+ H5	    XY	C35	C34	C36
+ H6	    XY	C36	C35	C37
+ H7	    XY	C37	C36	C38
+ H8	    XY	C38	C37	C39
+ H9	    XY	C39	C38	C310
+ H10	    XY	C310	C39	C311
+ H11	    XY	C311	C310	C312
+ H12	    XY	C312	C311	C313
+ H13	    XY	C313	C312	C314
+ H14	    XY	C314	C313	C315
+ H15	    XY	C315	C314	C316
+ H16	    XYZ	C316	C315	C34
+
+[ end ]
+
+[ molecule ]
+DMPC
+
+[ target ]
+charmm36
+
+[ atoms ]
+ N	 N	
+ CA	 C13	
+ CB	 C14	
+ CC	 C15	
+ CD	 C12	
+ CE	 C11	
+ P	 P	
+ OB	 O13	
+ OC	 O14	
+ OD	 O11	
+ OA	 O12	
+ CF	 C1	
+ CG	 C2	
+ OE	 O21	
+ C2A	 C21	
+ OF	 O22	
+ C2B	 C22	
+ CH	 C3	
+ OG	 O31	
+ C1A	 C31	
+ OH	 O32	
+ C1B	 C32	
+ C2C	 C23	
+ C2D	 C24	
+ C2E	 C25	
+ C2F	 C26	
+ C2G	 C27	
+ C2H	 C28	
+ C2I	 C29	
+ C2J	 C210	
+ C2K	 C211	
+ C2L	 C212	
+ C2M	 C213	
+ C2N	 C214	
+ C1C	 C33	
+ C1D	 C34	
+ C1E	 C35	
+ C1F	 C36	
+ C1G	 C37	
+ C1H	 C38	
+ C1I	 C39	
+ C1J	 C310	
+ C1K	 C311	
+ C1L	 C312	
+ C1M	 C313	
+ C1N	 C314	
+  
+[ hydrogens ]
+ H13	    ABC		C13	N	C15
+ H14	    ABC		C14	N	C15
+ H15	    ABC		C15	N	C13
+ H12	    AB		C12	C11	O12
+ H11	    AB		C11	C12	O12
+ H	    AB		C1	O11	C2
+ HS	    S		C2	O11	P
+ H2	    RS		C22	C21	C23
+ H	    XY		C3	C2	O31
+ H2	    XY		C32	C31	C33
+ H3	    RS		C23	C22	C24
+ H4	    RS		C24	C23	C25
+ H5	    RS		C25	C24	C26
+ H6	    RS		C26	C25	C27
+ H7	    RS		C27	C26	C28
+ H8	    RS		C28	C27	C29
+ H9	    RS		C29	C28	C210
+ H10	    RS		C210	C29	C211
+ H11	    RS		C211	C210	C212
+ H12	    RS		C212	C211	C213
+ H13	    RS		C213	C212	C214
+ H14	    RST		C214	C213	C212
+ H3	    XY		C33	C32	C34
+ H4	    XY		C34	C33	C35
+ H5 	    XY		C35	C34	C36
+ H6	    XY		C36	C35	C37
+ H7	    XY		C37	C36	C38
+ H8	    XY		C38	C37	C39
+ H9	    XY		C39	C38	C310
+ H10	    XY		C310	C39	C311
+ H11	    XY		C311	C310	C312
+ H12	    XY		C312	C311	C313
+ H13	    XY		C313	C312	C314
+ H14	    XYZ		C314	C313	C32
+  
+[ end ]
+
+[ molecule ]
+DOPC
+
+[ target ]
+charmm36
+
+[ atoms ]
+ N4	 N 	
+ C5	 C12	
+ C1	 C13	
+ C2	 C14	
+ C3	 C15	
+ C6	 C11	
+ P8	 P	
+ O9	 O13	
+ O10	 O14	
+ O7	 O12	
+ O11	 O11	
+ C12	 C1	
+ C13	 C2	
+ O14	 O21	
+ C15	 C21	
+ O16	 O22	
+ C17	 C22	
+ C32	 C3	
+ O33	 O31	
+ C34	 C31	
+ O35	 O32	
+ C36	 C32	
+ C18	 C23	
+ C19	 C24	
+ C20	 C25	
+ C21	 C26	
+ C22	 C27	
+ C23	 C28	
+ C24	 C29	
+ C25	 C210	
+ C26	 C211	
+ C27	 C212	
+ C28	 C213	
+ C29	 C214	
+ C30	 C215	
+ C31	 C216	
+ CA3	 C217	
+ CA4	 C218	
+ C37	 C33	
+ C38	 C34	
+ C39	 C35	
+ C40	 C36	
+ C41	 C37	
+ C42	 C38	
+ C43	 C39	
+ C44	 C310	
+ C45	 C311	
+ C46	 C312	
+ C47	 C313	
+ C48	 C314	
+ C49	 C315	
+ C50	 C316	
+ CA1	 C317	
+ CA2	 C318	
+
+[ hydrogens ]
+ H12	    AB		C12	C11	O12
+ H13	    ABC		C13	N	C15
+ H14	    ABC		C14	N	C15
+ H15	    ABC		C15	N	C13
+ H11	    AB		C11	C12	O12
+ H	    AB		C1	O11	C2
+ HS	    S		C2	O11	P
+ H2	    RS		C22	C21	C23
+ H	    XY		C3	C2	O31
+ H2	    XY		C32	C31	C33	
+ H3	    RS		C23	C22	C24
+ H4	    RS		C24	C23	C25
+ H5	    RS		C25	C24	C26
+ H6	    RS		C26	C25	C27
+ H7	    RS		C27	C26	C28
+ H8	    RS		C28	C27	C29
+ H9R	    R		C29	C28	C210
+ H10R	    R		C210	C29	C211
+ H11	    RS		C211	C210	C212
+ H12	    RS		C212	C211	C213
+ H13	    RS		C213	C212	C214
+ H14	    RS		C214	C213	C215
+ H15	    RS		C215	C214	C216
+ H16	    RS		C216	C215	C217
+ H17	    RS		C217	C216	C218
+ H18	    RST		C218	C217	C216
+ H3	    XY		C33	C32	C34
+ H4	    XY		C34	C33	C35
+ H5	    XY		C35	C34	C36
+ H6	    XY		C36	C35	C37
+ H7	    XY		C37	C36	C38
+ H8	    XY		C38	C37	C39
+ H9X	    X		C39	C38	C310
+ H10X	    X		C310	C39	C311
+ H11	    XY		C311	C310	C312
+ H12	    XY		C312	C311	C313
+ H13	    XY		C313	C312	C314
+ H14	    XY		C314	C313	C315
+ H15	    XY		C315	C314	C316
+ H16	    XY		C316	C315	C317
+ H17	    XY		C317	C316	C318
+ H18	    XYZ		C318	C317	C316
+  
+[ end ]
+
+[ molecule ]
+DPPC
+
+[ target ]
+charmm36
+
+[ atoms ]
+ N4	N	
+ C1	C13	
+ C2	C14	
+ C3	C15	
+ C5	C12	
+ C6	C11	
+ P8	P	
+ O9	O13	
+ O10	O14	
+ O11	O11	
+ O7	O12	
+ C12	C1	
+ C13	C2	
+ O14	O21	
+ C15	C21	
+ O16	O22	
+ C17	C22	
+ C32	C3	
+ O33	O31	
+ C34	C31	
+ O35	O32	
+ C36	C32	
+ C18	C23	
+ C19	C24	
+ C20	C25	
+ C21	C26	
+ C22	C27	
+ C23	C28	
+ C24	C29	
+ C25	C210	
+ C26	C211	
+ C27	C212	
+ C28	C213	
+ C29	C214	
+ C30	C215	
+ C31	C216	
+ C37	C33	
+ C38	C34	
+ C39	C35	
+ C40	C36	
+ C41	C37	
+ C42	C38	
+ C43	C39	
+ C44	C310	
+ C45	C311	
+ C46	C312	
+ C47	C313	
+ C48	C314	
+ C49	C315	
+ C50	C316	
+
+[ hydrogens ]
+ H13	    ABC		C13	N	C15
+ H14	    ABC		C14	N	C15
+ H15	    ABC		C15	N	C13
+ H12	    AB		C12	C11	O12
+ H11	    AB		C11	C12	O12
+ H	    AB		C1	O11	C2
+ HS	    S		C2	O11	P
+ H2	    RS		C22	C21	C23
+ H	    XY		C3	C2	O31	
+ H2	    XY		C32	C31	C33
+ H3	    RS		C23	C22	C24
+ H4	    RS		C24	C23	C25
+ H5	    RS		C25	C24	C23
+ H6	    RS		C26	C25	C24
+ H7	    RS		C27	C26	C25
+ H8	    RS		C28	C27	C26
+ H9	    RS		C29	C28	C27
+ H10	    RS		C210	C29	C28
+ H11	    RS		C211	C210	C29
+ H12	    RS		C212	C211	C210
+ H13	    RS		C213	C212	C211
+ H14	    RS		C214	C213	C212
+ H15	    RS		C215	C214	C213
+ H16	    RST		C216	C215	C214
+ H3	    XY		C33	C32	C34
+ H4	    XY		C34	C33	C35
+ H5	    XY		C35	C34	C36
+ H6	    XY		C36	C35	C37
+ H7	    XY		C37	C36	C38
+ H8	    XY		C38	C37	C39
+ H9	    XY		C39	C38	C310
+ H10	    XY		C310	C39	C311
+ H11	    XY		C311	C310	C312
+ H12	    XY		C312	C311	C313
+ H13	    XY		C313	C312	C314
+ H14	    XY		C314	C313	C315
+ H15	    XY		C315	C314	C316
+ H16	    XYZ		C316	C315	C314
+   
+[ end ]
+
+[ molecule ]
+POPC
+
+[ target ]
+gromos43A1-S3
+
+[ atoms ]
+ N      N4
+ CA	C5
+ CN1    C1
+ CN2    C2
+ CN3    C3
+ CB     C6
+ P      P8
+ OB     OM9
+ OC     OM10
+ OA     OS7
+ OD     OS11
+ CC     C12
+ CD     C13
+ OG     OS14
+ C2A    C15
+ OH     O16
+ C2B    C17
+ CE     C34
+ OE     OS35
+ C1A    C36
+ OF     O37
+ C1B    C38
+ C2C    C18
+ C2D    C19
+ C2E    C20
+ C2F    C21
+ C2G    C22
+ C2H    C23
+ C2I    C24
+ C2J    C25
+ C2K    C26
+ C2L    C27
+ C2M    C28
+ C2N    C29
+ C2P    C30
+ C2Q    C31
+ C2R    C33
+ C1C    C39
+ C1D    C40
+ C1E    C41
+ C1F    C42
+ C1G    C43
+ C1H    C44
+ C1I    C45
+ C1J    C46
+ C1K    C47
+ C1L    C48
+ C1M    C49
+ C1N    C50
+ C1O    C51
+ C1P    C52
+
+[ end ]
+
+[ molecule ]
+DMPC
+
+[ target ]
+gromos43a1-S3
+
+[ atoms ]
+ N      N4
+ CA	C1
+ CB     C2
+ CC     C3
+ CD     C5
+ CE     C6
+ P      P8
+ OB     OM9
+ OC     OM10
+ OD     OS11
+ OA     OS7
+ CF     C12
+ CG     C13
+ OE     OS14
+ C2A    C15
+ OF     O16
+ C2B    C17
+ CH     C30
+ OH     OS31
+ C1A    C32
+ OH     O33
+ C1B    C34
+ C2C    C18
+ C2D    C19
+ C2E    C20
+ C2F    C21
+ C2G    C22
+ C2H    C23
+ C2I    C24
+ C2J    C25
+ C2K    C26
+ C2L    C27
+ C2M    C28
+ C2N    C29
+ C1C    C35
+ C1D    C36
+ C1E    C37
+ C1F    C38
+ C1G    C39
+ C1H    C40
+ C1I    C41
+ C1J    C42
+ C1K    C43
+ C1L    C44
+ C1M    C45
+ C1N    C46
+
+[ end ]
+
+[ molecule ]
+DOPC
+
+[ target ]
+gromos43a1-S3
+
+[ atoms ]
+ N4     N4
+ C5     C5
+ C1     C1
+ C2     C2
+ C3     C3
+ C6     C6
+ P8     P8
+ O9     OM9
+ O10    OM10
+ O7     OS7
+ O11    OS11
+ C12    C12
+ C13    C13
+ O14    OS14
+ C15    C15
+ O16    O16
+ C17    C17
+ C32    C34
+ O33    OS35
+ C34    C36
+ O35    O37
+ C36    C38
+ C18    C18
+ C19    C19
+ C20    C20
+ C21    C21
+ C22    C22
+ C23    C23
+ C24    C24
+ C25    C25
+ C26    C26
+ C27    C27
+ C28    C28
+ C29    C29
+ C30    C30
+ C31    C31
+ CA3    C32
+ CA4    C33
+ C37    C39
+ C38    C40
+ C39    C41
+ C40    C42
+ C41    C43
+ C42    C44
+ C43    C45
+ C44    C46
+ C45    C47
+ C46    C48
+ C47    C49
+ C48    C50
+ C49    C51
+ C50    C52
+ C51    C53
+ C52    C54
+
+[ end ] 
+
+[ molecule ]
+DPPC
+
+[ target ]
+gromos43a1-S3
+
+[ atoms ]
+ N4     N4
+ C1     C1
+ C2     C2
+ C3     C3
+ C5     C5
+ C6     C6
+ P8     P8
+ O9     OM9
+ O10    OM10
+ O11    OS11
+ O7     OS7
+ C12    C12
+ C13    C13
+ O14    OS14
+ C15    C15
+ O16    O16
+ C17    C17
+ C32    C32
+ O33    OS33
+ C34    C34
+ O35    O35
+ C36    C36
+ C18    C18
+ C19    C19
+ C20    C20
+ C21    C21
+ C22    C22
+ C23    C23
+ C24    C24
+ C25    C25
+ C26    C26
+ C27    C27
+ C28    C28
+ C29    C29
+ C30    C30
+ C31    C31
+ C37    C37
+ C38    C38
+ C39    C39
+ C40    C40
+ C41    C41
+ C42    C42
+ C43    C43
+ C44    C44
+ C45    C45
+ C46    C46
+ C47    C47
+ C48    C48
+ C49    C49
+ C50    C50
+
+[ end ]
+

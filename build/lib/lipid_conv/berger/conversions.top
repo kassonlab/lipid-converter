@@ -1,0 +1,17 @@
+[ molecule ]
+POPE
+
+[ target ]
+POPC
+
+[ rename ]
+  H1	 CN1
+  H2	 CN2
+  H3	 CN3
+
+[ add ]
+
+[ remove ]
+
+[ end ]
+

@@ -1,0 +1,338 @@
+[ molecule ]
+POPC
+
+[ atoms ]
+C1
+C2
+C3
+N4
+C5
+C6
+OS7
+P8
+OM9
+OM10
+OS11
+C12
+C13
+OS14
+C15
+O16
+C17
+C18
+C19
+C20
+C21
+C22
+C23
+C24
+C25
+C26
+C27
+C28
+C29
+C30
+C31
+C32
+C33
+C34
+OS35
+C36
+O37
+C38
+C39
+C40
+C41
+C42
+C43
+C44
+C45
+C46
+C47
+C48
+C49
+C50
+C51
+C52
+
+[end ]
+
+[ molecule ]
+DPPC
+
+[ atoms ]
+C1
+C2
+C3
+N4
+C5
+C6
+OS7
+P8
+OM9
+OM10
+OS11
+C12
+C13
+OS14
+C15
+O16
+C17
+C18
+C19
+C20
+C21
+C22
+C23
+C24
+C25
+C26
+C27
+C28
+C29
+C30
+C31
+C32
+OS33
+C34
+O35
+C36
+C37
+C38
+C39
+C40
+C41
+C42
+C43
+C44
+C45
+C46
+C47
+C48
+C49
+C50
+
+[ end ]
+
+[ molecule ]
+DOPC
+
+[ atoms ]
+C1
+C2
+C3
+N4
+C5
+C6
+OS7
+P8
+OM9
+OM10
+OS11
+C12
+C13
+OS14
+C15
+O16
+C17
+C18
+C19
+C20
+C21
+C22
+C23
+C24
+C25
+C26
+C27
+C28
+C29
+C30
+C31
+C32
+C33
+C34
+OS35
+C36
+O37
+C38
+C39
+C40
+C41
+C42
+C43
+C44
+C45
+C46
+C47
+C48
+C49
+C50
+C51
+C52
+C53
+C54
+
+[ end ]
+
+[ molecule ]
+DMPC
+
+[ atoms ]
+C1
+C2
+C3
+N4
+C5
+C6
+OS7
+P8
+OM9
+OM10
+OS11
+C12
+C13
+OS14
+C15
+O16
+C17
+C18
+C19
+C20
+C21
+C22
+C23
+C24
+C25
+C26
+C27
+C28
+C29
+C30
+OS31
+C32
+O33
+C34
+C35
+C36
+C37
+C38
+C39
+C40
+C41
+C42
+C43
+C44
+C45
+C46
+
+[ end ]
+
+[ molecule ]
+DLPC
+
+[ atoms ]
+C1
+C2
+C3
+N4
+C5
+C6
+OS7
+P8
+OM9
+OM10
+OS11
+C12
+C13
+OS14
+C15
+O16
+C17
+C18
+C19
+C20
+C21
+C22
+C23
+C24
+C25
+C26
+C27
+C28
+OS29
+C30
+O31
+C32
+C33
+C34
+C35
+C36
+C37
+C38
+C39
+C40
+C41
+C42
+
+[ end ]
+
+[ molecule ]
+POPE
+
+[ atoms ]
+ H1 
+ H2 
+ H3 
+ N4 
+ C5 
+ C6 
+ OS7
+ P8 
+ OM9
+ OM10 
+ OS11 
+ C12  
+ C13  
+ OS14 
+ C15  
+ O16  
+ C17  
+ C18  
+ C19  
+ C20  
+ C21  
+ C22  
+ C23  
+ C24  
+ C25  
+ C26  
+ C27  
+ C28  
+ C29  
+ C30  
+ C31  
+ C32  
+ C33  
+ C34  
+ OS35 
+ C36  
+ O37  
+ C38  
+ C39  
+ C40  
+ C41  
+ C42  
+ C43  
+ C44  
+ C45  
+ C46  
+ C47  
+ C48  
+ C49  
+ C50  
+ C51  
+ C52  
+
+[ end ]
+

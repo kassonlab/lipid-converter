@@ -1,0 +1,990 @@
+[ molecule ]
+POPC
+
+[ target ]
+DMPC
+
+[ rename ]
+ C34	 C30
+ OS35	 OS31
+ C36	 C32
+ O37	 O33
+ C38	 C34
+ C39	 C35
+ C40	 C36
+ C41	 C37
+ C42	 C38
+ C43	 C39
+ C44	 C40
+ C45	 C41
+ C46	 C42
+ C47	 C43
+ C48	 C44
+ C49	 C45	
+ C50	 C46
+	
+[ add ]
+
+[ remove]
+  C30
+  C31
+  C32
+  C33
+  C51
+  C52
+
+[ end ]
+
+[ molecule ]
+POPC
+
+[ target ]
+POPE
+
+[ rename ]
+ C1	 H1
+ C2	 H2
+ C3	 H3
+
+[ add ]
+
+[ remove ]
+
+[ end ] 
+
+[ molecule ]
+POPC
+
+[ target ]
+DOPC
+
+[ rename ]
+
+[ add ]
+  C53	3	C52	C51	C50	
+  C54	4	C53	C52	C51	
+
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+POPC
+
+[ target ]
+DLPC
+
+[ rename ]
+ C34	 C28
+ OS35	 OS29
+ C36	 C30
+ O37	 O31
+ C38	 C32
+ C39	 C33
+ C40	 C34
+ C41	 C35
+ C42	 C36
+ C43	 C37
+ C44	 C38
+ C45	 C39
+ C46	 C40
+ C47	 C41
+ C48	 C42
+ 
+[ add ]
+
+[ remove ]
+ C29
+ C31
+ C49
+ C50	
+ C51
+ C52
+
+[ end ]  
+
+[ molecule ]
+POPC
+
+[ target ]
+DPPC
+
+[ rename ]
+ C34	 C32
+ OS35	 OS33
+ C36	 C34
+ O37	 O35
+ C38	 C36	
+ C39	 C37	
+ C40	 C38	
+ C41	 C39	
+ C42	 C40	
+ C43	 C41	
+ C44	 C42	
+ C45	 C43	
+ C46	 C44	
+ C47	 C45	
+ C48	 C46	
+ C49	 C47	
+ C50	 C48	
+ C51	 C49
+ C52	 C50			
+
+[ add ]
+
+[ remove ]
+ C32
+ C33
+
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+POPC
+
+[ rename ]
+ H1	 C1
+ H2	 C2
+ H3	 C3
+
+[ add ]
+  
+[ remove ]
+
+[ end ]  
+
+[ molecule ]
+POPE
+
+[ target ]
+DOPC
+
+[ rename ]
+ H1	 C1
+ H2	 C2
+ H3	 C3
+
+[ add ]
+ C53	 3	C52	C51	C50
+ C54	 4	C53	C52	C51	
+		
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+DMPC
+
+[ rename ]
+ H1	 C1
+ H2	 C2
+ H3	 C3
+ C34	 C30
+ OS35	 OS31
+ C36	 C32
+ O37	 O33
+ C38	 C34
+ C39	 C35
+ C40	 C36
+ C41	 C37
+ C42	 C38
+ C43	 C39
+ C44	 C40
+ C45	 C41
+ C46	 C42
+ C47	 C43
+ C48	 C44
+ C49	 C45
+ C50	 C46
+ 
+[ add ]
+
+[ remove ]
+ C31
+ C33
+ C51
+ C52
+
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+DPPC
+
+[ rename ]
+ H1	 C1
+ H2	 C2
+ H3	 C3
+ C34	 C30
+ OS35	 OS31
+ C36	 C32
+ O37	 O33
+ C38	 C34
+ C39	 C35
+ C40	 C36
+ C41	 C37
+ C42	 C38
+ C43	 C39
+ C44	 C40
+ C45	 C41
+ C46	 C42
+ C47	 C43
+ C48	 C44
+ C49	 C45
+ C50	 C46
+  
+[ add ]
+
+[ remove ]
+ C31
+ C33
+ C51
+ C52
+ 
+[ end ]
+
+[ molecule ]
+POPE
+
+[ target ]
+DLPC
+
+[ rename ]
+ H1	 C1
+ H2	 C2
+ H3	 C3
+ C34	 C28	
+ OS35	 OS29
+ C36	 C30
+ O37	 O31
+ C38	 C32
+ C39	 C33
+ C40	 C34
+ C41	 C35
+ C42	 C36
+ C43	 C37
+ C44	 C38
+ C45	 C39
+ C46	 C40
+ C47	 C41
+ C48	 C42
+ 
+[ add ]
+
+[ remove ]
+ C29
+ C31
+ C49
+ C50
+ C51
+ C52
+ 
+[ end ]  
+
+[ molecule ]
+DMPC
+
+[ target ]
+POPC
+
+[ rename ]
+ C30	 C34
+ OS31	 OS35
+ C32	 C36
+ O33	 O37
+ C34	 C38
+ C35	 C39
+ C36	 C40
+ C37	 C41
+ C38	 C42
+ C39	 C43
+ C40	 C44
+ C41	 C45
+ C42	 C46
+ C43	 C47
+ C44	 C48
+ C45	 C49
+ C46	 C50
+ 
+[ add ]
+ C30	0	C29	C28	C27
+ C31	1	C30	C29	C28
+ C32	2	C31	C30	C29
+ C33	3	C32	C31	C30
+ C51	1	C50	C49	C48	
+ C52	2	C51	C50	C49
+
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DMPC
+
+[ target ]
+POPE
+
+[ rename ]
+ C1	 H1	
+ C2	 H2	
+ C3	 H3
+ C30	 C34
+ OS31	 OS35
+ C32	 C36
+ O33	 O37
+ C34	 C38
+ C35	 C39
+ C36	 C40
+ C37	 C41
+ C38	 C42
+ C39	 C43
+ C40	 C44
+ C41	 C45
+ C42	 C46
+ C43	 C47
+ C44	 C48
+ C45	 C49
+ C46	 C50
+ 
+[ add ]
+ C30	0	C29	C28	C27
+ C31	1	C30	C29	C28
+ C32	2	C31	C30	C29
+ C33	3	C32	C31	C30
+ C51	1	C50	C49	C48	
+ C52	2	C51	C50	C49
+
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DMPC
+
+[ target ]
+DOPC
+[ rename ]
+ C30	 C34
+ OS31	 OS35
+ C32	 C36
+ O33	 O37
+ C34	 C38
+ C35	 C39
+ C36	 C40
+ C37	 C41
+ C38	 C42
+ C39	 C43
+ C40	 C44
+ C41	 C45
+ C42	 C46
+ C43	 C47
+ C44	 C48
+ C45	 C49
+ C46	 C50
+ 
+[ add ]
+ C30	0	C29	C28	C27
+ C31	1	C30	C29	C28
+ C32	2	C31	C30	C29
+ C33	3	C32	C31	C30
+ C51	1	C50	C49	C48	
+ C52	2	C51	C50	C49
+ C53	3	C52	C51	C50
+ C54	4	C53	C52	C51
+
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DMPC
+
+[ target ]
+DPPC
+
+[ rename ]
+ C30	 C32
+ OS31	 OS33
+ C32	 C34
+ O33	 O35
+ C34	 C36
+ C35	 C37
+ C36	 C38
+ C37	 C39
+ C38	 C40
+ C39	 C41
+ C40	 C42
+ C41	 C43
+ C42	 C44
+ C43	 C45
+ C44	 C46
+ C45	 C47
+ C46	 C48
+ 	 
+[ add ]
+ C30	0	C29	 C28	C27
+ C31	1	C30	 C29	C28
+ C49	9	C48	 C47	C46
+ C50	0	C49	 C48	C47
+
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DMPC
+
+[ target ]
+DLPC
+
+[ rename ]
+ C30	 C28
+ OS31	 OS29	
+ C32	 C30
+ O33	 O31
+ C34	 C32
+ C35	 C33
+ C36	 C34
+ C37	 C35
+ C38	 C36
+ C39	 C37
+ C40	 C38
+ C41	 C39
+ C42	 C40
+ C43	 C41
+ C44	 C42
+
+[ add ]
+
+[ remove ]
+ C29
+ C28
+
+[ end ]
+
+[ molecule ]
+DOPC
+
+[ target ]
+POPC
+
+[ rename ]
+
+[ add ]
+
+[ remove ]
+  C53
+  C54
+
+[ end ]
+
+[ molecule ]
+DOPC
+
+[ target ]
+POPE
+
+[ rename ]
+ C1      H1
+ C2      H2
+ C3      H3
+
+[ add ]
+
+[ remove ]
+  C53
+  C54
+
+[ end ]
+
+[ molecule ]
+DOPC
+
+[ target ]
+DMPC
+
+[ rename ]
+ C34     C30
+ OS35    OS31
+ C36     C32
+ O37     O33
+ C38     C34
+ C39     C35
+C40     C36
+ C41     C37
+ C42     C38
+ C43     C39
+ C44     C40
+ C45     C41
+ C46     C42
+ C47     C43
+ C48     C44
+ C49     C45
+ C50     C46
+
+[ add ]
+
+[ remove ]
+ C31
+ C33
+
+[ end ]
+
+[ molecule ]
+DOPC
+
+[ target ]
+DPPC
+
+[ rename ]
+ C34     C32
+ OS35    OS33
+ C36     C34
+ O37     O35
+ C38     C36
+ C39     C37
+ C40     C38
+ C41     C39
+ C42     C40
+ C43     C41
+ C44     C42
+ C45     C43
+ C46     C44
+ C47     C45
+ C48     C46
+ C49     C47
+ C50     C48
+ C51     C49
+ C52     C50
+
+[ add ]
+
+[ remove ]
+ C32
+ C33
+ C53
+ C54
+
+[ end ]
+
+[ molecule ]
+DOPC
+
+[ target ]
+DLPC
+
+[ rename ]
+ C34     C28
+ OS35    OS29
+ C36     C30
+ O37     O31
+ C38     C32
+ C39     C33
+ C40     C34
+ C41     C35
+ C42     C36
+ C43     C37
+ C44     C38
+ C45     C39
+ C46     C40
+ C47     C41
+ C48     C42
+
+[ add ]
+
+[ remove ]
+ C28
+ C29
+ C30
+ C31
+ C32
+ C33
+ C49
+ C50
+ C51
+ C52
+ C53
+ C54
+
+[ end ]
+
+[ molecule ]
+DPPC
+
+[ target ]
+POPC
+
+[ rename ]
+ C32     C34
+ OS33    OS35
+ C34     C36
+ O35     O37
+ C36     C38
+ C37     C39
+ C38     C40
+ C39     C41
+ C40     C42
+ C41     C43
+ C42     C44
+ C43     C45
+ C44     C46
+ C45     C47
+ C46     C48
+ C47     C49
+ C48     C50
+ C49     C51
+ C50     C52
+
+[ add ]
+ C32    2       C31     C30     C29
+ C33    3       C32     C31     C30
+
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DPPC
+
+[ target ]
+POPE
+
+[ rename ]
+ C1	 H1
+ C2	 H2
+ C3	 H3
+ C32     C34
+ OS33    OS35
+ C34     C36
+ O35     O37
+ C36     C38
+ C37     C39
+ C38     C40
+ C39     C41
+ C40     C42
+ C41     C43
+ C42     C44
+ C43     C45
+ C44     C46
+ C45     C47
+ C46     C48
+ C47     C49
+ C48     C50
+ C49     C51
+ C50     C52
+
+[ add ]
+ C32    2       C31     C30     C29
+ C33    3       C32     C31     C30
+
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DPPC
+
+[ target ]
+DMPC
+
+[ rename ]
+ C32	 C30
+ OS33	 OS31
+ C34	 C32
+ O35	 O33
+ C36	 C34
+ C37	 C35
+ C38	 C36
+ C39	 C37
+ C40	 C38
+ C41	 C39
+ C42	 C40
+ C43	 C41
+ C44	 C42
+ C45	 C43
+ C46	 C44
+ C47	 C45
+ C48	 C46
+
+[ add ]
+
+[ remove ]
+ C31
+
+[ end ]
+
+[ molecule ]
+DPPC
+
+[ target ]
+DOPC
+
+[ rename ]
+ C32	 C34
+ OS33	 OS35
+ C34	 C36
+ O35	 O37
+ C36	 C38
+ C37	 C39
+ C38	 C40
+ C39	 C41
+ C40	 C42
+ C41	 C43
+ C42	 C44
+ C43	 C45
+ C44	 C46
+ C45	 C47
+ C46	 C48
+ C47	 C49
+ C48	 C50
+ C49	 C51
+ C50	 C52
+ 
+[ add ]
+ C32	 2	C31	C30	C29
+ C33	 3	C32	C31	C30
+ C53	 3	C52	C51	C50
+ C54	 4	C53	C52	C51	
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DPPC
+
+[ target ]
+DLPC
+
+[ rename ]
+ C32	 C28
+ OS33	 OS29
+ C34	 C30
+ O35	 O31
+ C36	 C32
+ C37	 C33
+ C38	 C34
+ C39	 C35
+ C40	 C36
+ C41	 C37
+ C42	 C38
+ C43	 C39
+ C44	 C40
+ C45	 C41
+ C46	 C42
+ 
+[ add ]
+
+[ remove ]
+ C28
+ C29
+ C30
+ C31
+
+[ end ]
+
+[ molecule ]
+DLPC
+
+[ target ]
+POPC
+
+[ rename ]
+ C28	 C34
+ OS29	 OS35
+ C30	 C36
+ O31	 O37
+ C32	 C38
+ C33	 C39
+ C34	 C40
+ C35	 C41
+ C36	 C42
+ C37	 C43
+ C38	 C44
+ C39	 C45
+ C40	 C46
+ C41	 C47
+ C42	 C48
+
+[ add ]
+ C28	 8	C27	C26	C25
+ C29	 9	C28	C27	C26
+ C30	 0	C29	C28	C27
+ C31	 1	C30	C29	C28
+ C32	 2	C31	C30	C29
+ C33	 3	C32	C31	C30
+ C49	 9	C48	C47	C46
+ C50	 0	C49	C48	C47
+ C51	 1	C50	C49	C48
+ C52	 2	C51	C50	C49
+ 
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DLPC
+
+[ target ]
+POPE
+
+[ rename ]
+ C1	 H1
+ C2	 H2
+ C3	 H3
+ C28	 C34
+ OS29	 OS35
+ C30	 C36
+ O31	 O37
+ C32	 C38
+ C33	 C39
+ C34	 C40
+ C35	 C41
+ C36	 C42
+ C37	 C43
+ C38	 C44
+ C39	 C45
+ C40	 C46
+ C41	 C47
+ C42	 C48
+
+[ add ]
+ C28	 8	C27	C26	C25
+ C29	 9	C28	C27	C26
+ C30	 0	C29	C28	C27
+ C31	 1	C30	C29	C28
+ C32	 2	C31	C30	C29
+ C33	 3	C32	C31	C30
+ C49	 9	C48	C47	C46
+ C50	 0	C49	C48	C47
+ C51	 1	C50	C49	C48
+ C52	 2	C51	C50	C49
+ 
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DLPC
+
+[ target ]
+DOPC
+
+[ rename ]
+ C28	 C34
+ OS29	 OS35
+ C30	 C36
+ O31	 O37
+ C32	 C38
+ C33	 C39
+ C34	 C40
+ C35	 C41
+ C36	 C42
+ C37	 C43
+ C38	 C44
+ C39	 C45
+ C40	 C46
+ C41	 C47
+ C42	 C48
+
+[ add ]
+ C28	 8	C27	C26	C25
+ C29	 9	C28	C27	C26
+ C30	 0	C29	C28	C27
+ C31	 1	C30	C29	C28
+ C32	 2	C31	C30	C29
+ C33	 3	C32	C31	C30
+ C49	 9	C48	C47	C46
+ C50	 0	C49	C48	C47
+ C51	 1	C50	C49	C48
+ C52	 2	C51	C50	C49
+ C53	 3	C52	C51	C50
+ C54	 4	C53	C52	C51
+ 
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DLPC
+
+[ target ]
+DMPC
+
+[ rename ]
+ C28	 C30
+ OS29	 OS31
+ C30	 C32
+ O31	 O33
+ C32	 C34
+ C33	 C35
+ C34	 C36
+ C35	 C37
+ C36	 C38
+ C37	 C39
+ C38	 C40
+ C39	 C41
+ C40	 C42
+ C41	 C43
+ C42	 C44
+
+[ add ]
+ C28	 8	C27	C26	C25
+ C29	 9	C28	C27	C26
+ C45	 9	C44	C43	C42
+ C46	 0	C45	C44	C43
+ 
+[ remove ]
+
+[ end ]
+
+[ molecule ]
+DLPC
+
+[ target ]
+DPPC
+
+[ rename ]
+ C28	 C32
+ OS29	 OS33
+ C30	 C34
+ O31	 O35
+ C32	 C36
+ C33	 C37
+ C34	 C38
+ C35	 C39
+ C36	 C40
+ C37	 C41
+ C38	 C42
+ C39	 C43
+ C40	 C44
+ C41	 C45
+ C42	 C46
+
+[ add ]
+ C28	 8	C27	C26	C25
+ C29	 9	C28	C27	C26
+ C30	 0	C29	C28	C27
+ C31	 1	C30	C29	C28
+ C47	 7	C46	C45	C44
+ C48	 8	C47	C46	C45
+ C49	 9	C48	C47	C46
+ C50	 0	C49	C48	C47	
+  
+[ remove ]
+
+[ end ]
+
+
+
+
+
+
+
+
