@@ -10,6 +10,7 @@ LipidConverter.egg-info/dependency_links.txt
 LipidConverter.egg-info/requires.txt
 LipidConverter.egg-info/top_level.txt
 bin/lipid_converter.py
+docs/usage.txt
 lipid_conv/__init__.py
 lipid_conv/aux.py
 lipid_conv/convert.py

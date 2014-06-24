@@ -75,7 +75,7 @@ class convert():
                     lout = l.split()[0]
 
     def do(self,prot,ff,lin,lout,n,asymmetry):
-
+        
         new = Protein()
 
         # Get the total number of residues

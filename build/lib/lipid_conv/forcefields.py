@@ -38,3 +38,6 @@ lipid11_residues = {'DPPC':['PA','PC','PA'],
                     'POPS': ['PA','PS','OL'],
                     'POPG': ['PA','PGR','OL'],
                     'POPA': ['PA','PH-','OL']}
+
+
+is_lipid = ['POPC','POPE','POPG','POPS','DMPC','DOPC','DPPC']

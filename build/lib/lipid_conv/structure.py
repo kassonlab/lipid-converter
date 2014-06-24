@@ -3,7 +3,7 @@ import re
 import os
 import sys
 import numpy as np
-from forcefields import ff_sortings,lipid11_residues
+from forcefields import ff_sortings,lipid11_residues,is_lipid
 
 Vsites = ['MN1','MN2']
 directive = re.compile('^ *\[ *(.*) *\]')
@@ -31,9 +31,6 @@ class Sort:
                 resname = residue[0][1]
 
             out = self.sort_residue(residue,ff,resname)
-            #print "APA"
-            #print out
-            #print ff
             new.add_residue_data(out)
 
         return new
@@ -44,14 +41,11 @@ class Sort:
         if resname:
             resn = resname
         else:
-            #resname = residue[0][1]
             resn = residue[0][1]
-        #print residue[0]
-        #print ff,resn
+            
         sort_data = self.sorts[ff,resn]['atoms']
-        
         out = [0]*len(sort_data)
-        #print sort_data
+        
         if ff == 'lipid11':
 
             for i,(ai_atname,ai_resname) in enumerate(sort_data):
@@ -200,7 +194,8 @@ class Protein(Sort):
                 line = line[:-1]
                 # We throw away a bunch of stuff in the input
                 # pdb file here... this could be changed of course
-                if line[12:16].strip() not in Vsites:
+                if ( line[12:16].strip() not in Vsites  and
+                     (line[17:21].strip() in is_lipid)):
                     self.atname.append(line[12:16].strip())
                     self.resname.append(line[17:21].strip())
                     if longresnum:
@@ -231,7 +226,8 @@ class Protein(Sort):
         ctr = 0
         # and use that value to read in all atoms
         for line in lines[2:self.atcounter+3][:-1]:
-            if line[10:15].strip() not in Vsites:
+            if (line[10:15].strip() not in Vsites and
+                (line[5:10].strip() in is_lipid)):
                 self.resnum.append(int(line[0:5]))
                 self.resname.append(line[5:10].strip())
                 self.atname.append(line[10:15].strip())

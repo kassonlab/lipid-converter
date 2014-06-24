@@ -18,9 +18,7 @@ parser.add_argument('-asymmetry','--asymmetry',action='store_true',help='Treat e
 
 # Get the arguments
 args = parser.parse_args()
-print args
-#import sys
-#sys.exit()
+
 # Read in the input structure - pdb or gro based on file ending 
 struct = lipid_conv.read_input(input=args.input,
                                longresnum=args.longresnum,

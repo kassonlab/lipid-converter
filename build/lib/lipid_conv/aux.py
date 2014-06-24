@@ -196,6 +196,17 @@ def get_xyz_coords(l,ai):
     return xyz
 
 
+# Returns the number of the i'th residue
+def get_resnum(prot,i):
+    count = 0
+    
+    for resnum in prot.get_residues():
+        if count == i:
+            return resnum
+        count = count + 1
+
+    return -1
+    
 # Get coords of P-atoms
 def get_p_coords(struct):
     
@@ -232,3 +243,15 @@ def make_contact_graph(contact_mat):
 
 def get_graph_components(graph):
     return [np.sort(component) for component in NX.connected_components(graph)]
+
+def get_leaflet_idx_for_resnum(struct,resnum,components):
+    for i in range(len(components)):
+        for j in range(len(components[i])):
+            comp_ij = components[i][j]
+            
+            resn = get_resnum(struct,comp_ij)
+            
+            if resn == resnum:
+                return i
+
+    return -1

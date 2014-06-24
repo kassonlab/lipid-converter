@@ -1,0 +1,178 @@
+USAGE INFORMATION FOR LIPID CONVERTER
+-------------------------------------
+
+TABLE OF CONTENTS
+-----------------
+
+0. Installation
+1. Adding a new forcefield
+2. Description of file formats
+	a. Transformations
+	b. Conversions
+	c. Sortings
+3. Making a asymmetric bilayer
+4. Usage examples
+5. Lipid-converter external dependencies
+6. Various notes
+
+
+0. INSTALLATION
+---------------
+Lipid-converter is available from the Python Package Index (PyPI), and can be installed using 
+
+$ pip install LipidConverter
+
+This will install everything in the standard location on your system, and in addition the lipid-converter.py script in /usr/local/bin/
+
+To uninstall, simply do
+$ pip uninstall LipidConverter
+
+
+1. ADDING A NEW FORCEFIELD
+--------------------------
+To add support for a new forcefield, you need to create a new directory
+within the lipid_conv-folder (see the existing forcefield directories).
+
+The name of the folder (i.e. name of the forcefield) then also needs to be
+registered in forcefields.py. Depending on whether support is added for 
+transformations, conversions or both, change the appropriate data types.
+
+Within each forcefield directory, transformations to another forcefield
+are specified in a file called transforms.top, and similarly in 
+conversions.top for conversions. 
+
+The file sortings.top defines, for each lipid, the order in which atoms get
+written to the output file when using the -canonical flag to lipid-converter
+
+
+
+2. DESCRIPTION OF FILE FORMATS
+------------------------------
+The format of the data files uses different keywords enclosed within
+brackets ([]) to separate different pieces of information.
+
+a. Transformations (transforms.top)
+
+[ molecule ]
+defines the name of the input lipid
+
+[ target ]
+defines the name of the output forcefield
+
+Note: In the case of canonical sorting, a sortings.top file needs to be 
+present in a directory with the same name as the [ target ] forcefield
+
+[ atoms ]
+Here come the main transformation. This is simply a list of source forcefield
+atom names (in the first column) and their names in the target forcefield.
+
+Note: For amber/Lipid11, the name of the residue also need to be specified, since
+this forcefield does not use unique names on the level of individual lipids, but rather
+for different head groups and tails. In forcefields.py, there is a translation dictionary
+that maps the Lipid11 combinations of tails and head groups to "real" lipid names. 
+
+[ hydrogens ]
+For a transformation from a united-atom forcefield (such as berger) to an 
+all-atom forcefield (such as charmm36), this directive specifies how to construct
+the positions of all hydrogen atoms from the heavy atoms.
+
+The format is as follows:
+
+H12        AB  C12     C11     C13
+
+H12 is the base name of the hydrogens. Then, lipid-converter will look at the second column, and add as many hydrogens as the number of characters in that column. In this example, lipid-converter will add the hydrogens H12A and H12B, using the positions of the heavy atoms C12, C11 and C13. The names of the constructing, heavy atoms are those of the target/output forcefield (since internally names are changed before hydrogens are added).
+
+The parser is a bit brain-dead, and so in the case of adding a single hydrogen, such as this
+
+HS         S   C2      C1      C3
+
+we need to give the full base name (HS) as well as a single letter (S in this case). This will add a hydrogen named HS, not one named HSS.
+
+[ end ]
+The end-directive tells lipid-converter to start reading the next molecule
+
+
+
+b. Conversions
+
+Conversions are defined for each forcefield separately. The internal order of operation is to first remove any surplus atoms, then make appropriate renamings, and finally build any missing atoms. 
+ 
+[ molecule ]
+Defines the name of the lipid to be converted (name of the lipid in the input file)
+
+[ target ]
+Name of the output lipid
+
+[ rename ]	
+This is a two-column list of atoms who's name will change in the conversion, but
+where the 3-d coordinates can remain the same. For example, to convert from POPC to
+POPG, we want to preserve as much of the head group geometry as possible, and simple rename (e.g. for charmm36) the C13-atom to H13A. 
+
+[ add ]
+These atoms have no appropriate counterpart in the input lipid, and need to be added.
+The format specification is the same as for the [ hydrogens ] directive above.
+
+E.g. the line
+HO3   3       OC3     C13     C12
+
+will add the HO3 atom (named HO3, not HO33) using the positions of OC3, C13 and C12.
+
+[ remove ]
+These atoms will be removed from the output lipid, as they should not be present
+
+
+[ end ]
+End the description of this conversion specification. 
+
+
+3. MAKING AN ASYMMETRIC BILAYER
+-------------------------------
+
+The default conversion operation is to operate on all lipids in the input file.
+However, by using the -asymmetry flag, the user can create a bilayer with an asymmetric lipid distribution. The detection of the individual lipids uses the algorithm described in N. Michaud-Agrawal et al, J. Comput. Chem. 32 (2011), 2319, please read and cite that paper as well.
+
+Currently, it is necessary when using the asymmetry-mode to start from a system with only a single lipid species. If you want to take an already asymmetric bilayer and make additional conversions, we suggest you make two separate files for each leaflet first.
+
+Also, there is no support for stacked bilayers.
+
+Note: The identification of leaflets has not been extensively tested, please report bugs or suggestions for improvements to larsson.r.per@gmail.com. 
+
+
+4. USAGE EXAMPLES
+-----------------
+
+Input files can be either pdb or Gromacs gro-files.
+
+
+Transformation of a charmm36 input bilayer to amber/lipid11:
+$ lipid-converter.py -f input_file.pdb (.gro) -o output.pdb (.gro) -mode transform -ffin charmm36 -ffout lipid11 -canonical
+
+Conversion of a bilayer with berger POPE to POPC
+$ lipid-converter.py -f input_file.pdb (.gro) -o output.pdb (.gro) -mode convert -ffin berger -lin POPE -lout POPC -canonical -n 1
+
+Conversion of the same bilayer, but converting only every second POPE to POPC
+$ lipid-converter.py -f input_file.pdb (.gro) -o output.pdb (.gro) -mode convert -ffin berger -lin POPE -lout POPC -canonical -n 2
+
+Making an asymmetric bilayer, starting from an all-POPC bilayer, changing every second POPC in the upper leaflet to POPE, and every third POPC in the lower leaflet to POPG
+$ lipid_converter.py -f step5_popc_only.gro -o foo.gro -mode convert -ffin charmm36 -lin POPC:POPC -lout POPE:POPG -asymmetry -n 2:3 -canonical
+
+Note the usage of the colon (:) notation to separate each leaflet. 
+
+
+5. LIPID CONVERTER EXTERNAL DEPENDENCIES
+----------------------------------------
+
+Lipid-converter requires a working installation of Numpy, and in addition the automatic detection of leaflets uses the networks-package (https://networkx.github.io)
+
+
+6. VARIOUS NOTES
+-----------------
+
+When using gro-files as input, the box-information on the last line is not transferred to the output file. You have to do this manually
+
+All command line arguments are available on the command line using 
+$ lipid-converter.py --help
+
+
+
+

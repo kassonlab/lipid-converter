@@ -14,11 +14,13 @@ parser.add_argument('-lout','--lout',help='Output lipid')
 parser.add_argument('-n','--n',help='Convert every n-th lipid')
 parser.add_argument('-canonical','--canonical',action='store_true',help='Canonical force field sorting of output')
 parser.add_argument('-longresnum','--longresnum',action='store_true',help='Assume long residues numbers in pdb file')
+parser.add_argument('-asymmetry','--asymmetry',action='store_true',help='Treat each leaflet separately for mode convert. See docs/asymmetry for detailed usage')
 
 # Get the arguments
 args = parser.parse_args()
 print args
-
+#import sys
+#sys.exit()
 # Read in the input structure - pdb or gro based on file ending 
 struct = lipid_conv.read_input(input=args.input,
                                longresnum=args.longresnum,
@@ -34,7 +36,8 @@ elif args.mode == 'convert':
                                  ffin=args.ffin,
                                  lin=args.lin,
                                  lout=args.lout,
-                                 n = args.n)
+                                 n = args.n,
+                                 asymmetry = args.asymmetry)
 else:
     print "Either transform or convert please...!"
     sys.exit()

@@ -92,7 +92,6 @@ class convert():
 
             # 1. Get the coords of the P-atoms
             p_coords = aux.get_p_coords(prot)
-            #print p_coords
             
             # 2. Calculate distance matrix for coords
             distance_mat = aux.contact_matrix(p_coords)
@@ -101,55 +100,58 @@ class convert():
             print "Attempting to identify individual leaflets"
             graph = aux.make_contact_graph(distance_mat)
             components = aux.get_graph_components(graph)
- 
-            # 4. Convert each leaflet separately
-            print "Converting leaflets"
             
-            convert_count = 0
+            # 4. Convert each leaflet separately
+            print "Converting leaflets separately"
+            
+            convert_count = [0,0]
+            
             lin_leaflets = lin.split(':')
+            lout_leaflets = lout.split(':')
             n_leaflets = n.split(':')
             
-            for i in range(len(components)):
+            for resnum in prot.get_residues():
+                residue = prot.get_residue_data(resnum)
+                resname = residue[0][1]
                 
-                lin_i = lin_leaflets[i]
-                n_i = n_leaflets[i]
+                # Get the leaflet index for this residue
+                leaflet_idx = aux.get_leaflet_idx_for_resnum(prot,resnum,components)
                 
-                for j in range(len(components[i])):
-                    print "leaflet %d, residue %d"%(i+1,components[i][j])
+                # Do error checking for leaflet_idx
+                lin_i = lin_leaflets[leaflet_idx]
+                lout_i = lout_leaflets[leaflet_idx]
+                n_i = int(n_leaflets[leaflet_idx])
+                
+                if resname == lin_i:
+                    convert_count[leaflet_idx] = convert_count[leaflet_idx] + 1
                     
-                    for resnum in prot.get_residues():
-                        residue = prot.get_residue_data
+                if convert_count[leaflet_idx]%n_i==0 and resname == lin_i:
+                    try:
+                        lipid = residue[0][1]
+                        add_atoms = self.conversions[ff,lin_i,lout_i]['add']
+                        rename_atoms = self.conversions[ff,lin_i,lout_i]['rename']
+                        remove_atoms = self.conversions[ff,lin_i,lout_i]['remove']
+                    except:
+                        print "No conversion between %s and %s in %s found"%(lin_i,lout_i,ff)
+                        sys.exit()
                         
-                        if resname == lin_i:
-                            convert_count = convert_count + 1
+                            # Do the conversions
+                    transformed = self.remove_atoms(residue,remove_atoms)
+                    transformed = self.rename_atoms(transformed,rename_atoms)
+                    transformed = self.build_atoms(transformed,add_atoms)
+                    transformed = self.update_resname(transformed,lout_i)
+                    print "Converted residue %s %d to %s (total numres: %d)"%(lin_i,resnum,lout_i,total_resnum)
+                else:
+                    transformed = residue
 
-                        if convert_count%n_i==0 and resname == lin:
-                            try:
-                                lipid = residue[0][1]
-                                add_atoms = self.conversions[ff,lin,lout]['add']
-                                rename_atoms = self.conversions[ff,lin,lout]['rename']
-                                remove_atoms = self.conversions[ff,lin,lout]['remove']
-                            except:
-                                print "No conversion between %s and %s in %s found"%(lin,lout,ff)
-                                sys.exit()
-
-                    # Do the conversions                                                
-                            transformed = self.remove_atoms(residue,remove_atoms)
-                            transformed = self.rename_atoms(transformed,rename_atoms)
-                            transformed = self.build_atoms(transformed,add_atoms)
-                            transformed = self.update_resname(transformed,lout)
-                            print "Converted residue %s %d to %s (total numres: %d)"%(lin,resnum,lout,total_resnum)
-                        else:
-                            transformed = residue
-
-                        # Add the result to a new protein
-                        new.add_residue_data(transformed)
+                    # Add the result to a new protein
+                new.add_residue_data(transformed)
                     
             return new
-
         
         else:
             convert_count = 0
+
             for resnum in prot.get_residues():
                 residue = prot.get_residue_data(resnum)
                 resname = residue[0][1]
