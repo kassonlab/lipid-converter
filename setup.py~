@@ -12,8 +12,7 @@ setup(
                                  'gromos53a6/*.top',
                                  'gromos54a7/*.top',
                                  'lipid11/*.top',
-                                 'opls/*.top'],
-                  '':['docs/usage.txt'],
+                                 'opls/*.top']
                   },
     scripts=['bin/lipid_converter.py'],
     url='http://lipid-converter.appspot.com',
