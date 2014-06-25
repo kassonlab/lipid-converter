@@ -1,0 +1,6 @@
+To install lipid-converter, simply do (from the command line)
+
+$ python setup.py install
+
+This will install lipid-converter in the standard module location on your system, as well as give you access to the lipid-converter.py script from the command line
+
