@@ -98,7 +98,6 @@ class convert():
         # Get the total number of residues
         total_resnum = len(prot.get_residues())
         
-        print aux.have_networkx
         # Treat the asymmetric case separetly
         if asymmetry:
             

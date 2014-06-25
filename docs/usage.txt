@@ -9,7 +9,7 @@ TABLE OF CONTENTS
 2. Description of file formats
 	a. Transformations
 	b. Conversions
-	c. Sortings
+	c. Sorting
 3. Making a asymmetric bilayer
 4. Usage examples
 5. Lipid-converter external dependencies
@@ -123,6 +123,10 @@ These atoms will be removed from the output lipid, as they should not be present
 
 [ end ]
 End the description of this conversion specification. 
+
+c. Sorting
+
+When using the -canonical flag to sort atoms, they are sorted (for each lipid) according to the order they are listed in the sortings.top file for each force field. Whitout the -canonical option, the output atom order is the same as the input order for transformations, but more arbitrary for conversions, due to the additions and deletions of atoms in the process.
 
 
 3. MAKING AN ASYMMETRIC BILAYER

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='LipidConverter',
-    version='0.1.2',
+    version='0.1.3',
     author='Per Larsson',
     author_email='larsson.r.per@gmail.com',
     packages=['lipid_conv'],

@@ -1,7 +1,32 @@
+#Lipid-converter.py
+#Copyright (C) 2014 Per Larsson Peter Kasson
+
+#This library is free software; you can redistribute it and/or
+#modify it under the terms of the GNU Library General Public
+#License as published by the Free Software Foundation; either
+#version 2 of the License, or (at your option) any later version.
+
+#This library is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+#Library General Public License for more details.
+
+#You should have received a copy of the GNU Library General Public
+#License along with this library; if not, write to the
+#Free Software Foundation, Inc., 51 Franklin St, Fifth Floor,
+#Boston, MA  02110-1301, USA.
+
 import math
 import numpy as np
-import networkx as NX
 
+try:    
+    import networkx as NX
+    have_networkx = True
+except ImportError:
+    print "Could not import networkx - will disable asymmetric"
+    print "bilayer opertations"
+    have_networkx = False
+    
 distH = 0.1
 alphaH = np.arccos(-1/3.0)
 s6 = 0.5 * np.sqrt(3.0)

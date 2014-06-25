@@ -17,7 +17,6 @@ lipid_conv/convert.py
 lipid_conv/forcefields.py
 lipid_conv/lipid_conv.py
 lipid_conv/structure.py
-lipid_conv/test.py
 lipid_conv/transform.py
 lipid_conv/berger/conversions.top
 lipid_conv/berger/sortings.top
