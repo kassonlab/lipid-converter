@@ -98,7 +98,12 @@ class convert():
         # Get the total number of residues
         total_resnum = len(prot.get_residues())
         
-        print aux.have_networkx
+        # Check that we have the networkx library imported properly
+        if aux.have_networkx == False:
+            print "Convert.py: NetworkX not detected, will not do"
+            print "asymmetric bilayer generation"
+            asymmetry = False
+        
         # Treat the asymmetric case separetly
         if asymmetry:
             

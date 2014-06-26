@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='LipidConverter',
-    version='0.1.4',
+    version='0.1.5',
     author='Per Larsson',
     author_email='larsson.r.per@gmail.com',
     packages=['lipid_conv'],
@@ -20,6 +20,6 @@ setup(
     license='LICENSE.txt',
     description='Useful descripton text',
     long_description=open('README.txt').read(),
-    install_requires=['NumPy >= 1.6','NetworkX >= 1.9'],
+    install_requires=['NumPy >= 1.6','NetworkX >= 1.9','python-gflags >= 1.8'],
 )
 
