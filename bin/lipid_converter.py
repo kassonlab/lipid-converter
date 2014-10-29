@@ -103,4 +103,4 @@ if FLAGS.canonical:
     new_struct = new_struct.sort(ff_sort,resmap)
 
 # Write out result                                                           
-new_struct.write(FLAGS.output)
+new_struct.write(FLAGS.o)
